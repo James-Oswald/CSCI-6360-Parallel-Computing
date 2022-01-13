@@ -1,0 +1,1 @@
+This repo contains assignments for my parallel computing class at RPI.
