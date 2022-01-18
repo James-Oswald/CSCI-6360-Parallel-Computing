@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "random": "c"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/mnt/d/program/CSCI-6360-Parallel-Computing",
+            "binaryPath": "/mnt/d/program/CSCI-6360-Parallel-Computing/cla",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1",
+            "binaryPath": "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/cla",
+            "binaryArgs": []
+        }
+    ],
+}
