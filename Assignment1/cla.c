@@ -12,7 +12,7 @@
 //Touch these defines
 #define input_size 1024 // hex digits 
 #define block_size 8
-#define verbose 1
+#define verbose 0
 
 //Do not touch these defines
 #define digits (input_size+1)
@@ -156,13 +156,13 @@ void compute_section_carry(){
 }
 
 void compute_group_carry(){
-    for(int k = 0; k < nsections; k++)  //This is the loop that gets theoretically parallelized
+    for(int k = 0; k < nsections; k++)  //This is the loop that gets parallelized
         for(int j = k*block_size; j < (k+1)*block_size; j++) 
             gcj[j] = ggj[j] | (gpj[j] & (j%block_size==0 ? (k==0 ? 0 : sck[k-1]) : gcj[j-1]));
 }
 
 void compute_carry(){
-    for(int j = 0; j < ngroups; j++)  //This is the loop that gets theoretically parallelized
+    for(int j = 0; j < ngroups; j++)  //This is the loop that gets parallelized
         for(int i = j*block_size; i < (j+1)*block_size; i++)
             ci[i] = gi[i] | (pi[i] & (i%block_size==0 ? (j==0 ? 0 : gcj[j-1]) : ci[i-1]));
 }
@@ -184,51 +184,69 @@ void cla(){
     compute_sum();
 }
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[])
+{
     int randomGenerateFlag = 0;
-    if (argc == 2){
-        if (strcmp(argv[1], "-r") == 0)
-            randomGenerateFlag = 1;
-    }
-    if (randomGenerateFlag == 0){
-        read_input();
-    }
-    else{
-        hex1 = generate_random_hex(input_size);
-        hex2 = generate_random_hex(input_size);
-    }
     char* hexa=NULL;
     char* hexb=NULL;
     char* hexSum=NULL;
+    char* int2str_result=NULL;  
+
+    if (argc == 2) {
+        if (strcmp(argv[1], "-r") == 0)
+            randomGenerateFlag = 1;
+    }
+
+    if (randomGenerateFlag == 0)
+    {
+        read_input();
+    }
+    else
+    {
+        hex1 = generate_random_hex(input_size);
+        hex2 = generate_random_hex(input_size);
+    }
+
     hexa = prepend_non_sig_zero(hex1);
     hexb = prepend_non_sig_zero(hex2);
     hexa[digits] = '\0'; //double checking
     hexb[digits] = '\0';
+
     bin1 = gen_formated_binary_from_hex(hexa);
     bin2 = gen_formated_binary_from_hex(hexb);
+
     cla();
-    hexSum = revbinary_to_hex(int_to_string(sumi,bits),bits);
+
+    int2str_result = int_to_string(sumi,bits);
+    hexSum = revbinary_to_hex( int2str_result,bits);
+    // hexSum = revbinary_to_hex(int_to_string(sumi,bits),bits);
     // free inputs fields allocated in read_input or gen random calls
+    free(int2str_result);
     free(hex1);
     free(hex2);
+
     // free bin conversion of hex inputs
     free(bin1);
     free(bin2);
-    if(verbose==1 || randomGenerateFlag==1){
+    
+    if(verbose==1 || randomGenerateFlag==1)
+    {
         printf("Hex Input\n");
         printf("a   ");
         print_chararrayln(hexa);
         printf("b   ");
         print_chararrayln(hexb);
     }
-    if (verbose==1 || randomGenerateFlag==1){
+    if (verbose==1 || randomGenerateFlag==1)
+    {
         printf("Hex Return\n");
         printf("sum =  ");
-        printf("%s\n",hexSum);
     }
+
     // free memory from prepend call
     free(hexa);
     free(hexb);
+    printf("%s\n",hexSum);
     free(hexSum);
     return 1;
 }

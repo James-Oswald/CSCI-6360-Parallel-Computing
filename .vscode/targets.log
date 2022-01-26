@@ -5,9 +5,8 @@ make all -f /mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/makefile -C 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Tue Jan 18 01:23:28 2022
+# Make data base, printed on Tue Jan 25 16:02:52 2022
 
 # Variables
 
@@ -56,7 +55,7 @@ PATH = /home/james/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/b
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-765d6e29-008c-4aa3-8fbc-d7a8414a33be.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f9c708d0-d244-4485-b322-cd0012c6d440.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -70,7 +69,7 @@ PWD = /mnt/d/program/CSCI-6360-Parallel-Computing
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/12_interop
+WSL_INTEROP = /run/WSL/15_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
 # environment
@@ -147,10 +146,8 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
-# environment
-MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=69/1024=7%, Rehash=0, Collisions=4/97=4%
+# Load=68/1024=7%, Rehash=0, Collisions=4/96=4%
 
 # Pattern-specific Variable Values
 
@@ -228,6 +225,6 @@ all:
 # strcache performance: lookups = 13 / hit rate = 46%
 # hash-table stats:
 # Load=7/8192=0%, Rehash=0, Collisions=0/13=0%
-# Finished Make data base on Tue Jan 18 01:23:28 2022
+# Finished Make data base on Tue Jan 25 16:02:52 2022
 
  
