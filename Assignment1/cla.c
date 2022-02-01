@@ -59,19 +59,24 @@ void read_input(){
     free(in2);
 }
 
+//Computes the generate and propagate of for each individual bit
 void compute_gp(){
-    for(int i = 0; i < bits; i++){
+    for(int i = 0; i < bits; i++){ //This loop can be run in parallel
         gi[i] = bin1[i] & bin2[i];
         pi[i] = bin1[i] | bin2[i];
     }
 }
 
-
+//Computes the generate and propagate values for each group of 8 bits
 void compute_group_gp(){
     for(int j = 0; j < ngroups; j++){
         int jstart = j*block_size;
+
+        //get groups of bit generate and propagate values
         int* ggj_group = grab_slice(gi,jstart,block_size);
         int* gpj_group = grab_slice(pi,jstart,block_size);
+        
+        //Compute group generate
         int sum = 0;
         for(int i = 0; i < block_size; i++){
             int mult = ggj_group[i]; //grabs the g_i term for the multiplication
@@ -82,17 +87,21 @@ void compute_group_gp(){
         }
         ggj[j] = sum;
 
+        //Compute group propagate
         int mult = gpj_group[0];
         for(int i = 1; i < block_size; i++){
             mult &= gpj_group[i];
         }
         gpj[j] = mult;
-        // free from grab_slice allocation
+
+        //free from grab_slice allocation
         free(ggj_group);
         free(gpj_group);
     }
 }
 
+//Computes the generate and propagate values for each section of 8 groups
+//Algo is the same as compute_group_gp, see comments there
 void compute_section_gp(){
     for(int k = 0; k < nsections; k++){
         int kstart = k*block_size;
@@ -118,7 +127,8 @@ void compute_section_gp(){
     }
 }
 
-
+//Computes the generate and propagate values for each super section of 8 sections
+//Algo is the same as compute_group_gp, see comments there
 void compute_super_section_gp(){
     for(int l = 0; l < nsupersections; l++){
         int lstart = l*block_size;
@@ -144,29 +154,34 @@ void compute_super_section_gp(){
     }
 }
 
+//Computes the carry bit for each super section
 void compute_super_section_carry(){
-    for(int l = 0; l < nsupersections; l++)
+    for(int l = 0; l < nsupersections; l++) //This can not be parallelized due to dependence on sscl[l-1]
         sscl[l] = ssgl[l] | (sspl[l] & (l==0 ? 0 : sscl[l-1]));
 }
 
+//Computes the carry bit for each section within each super section. 
 void compute_section_carry(){
     for(int l = 0; l < nsupersections; l++) //This is the loop that gets parallelized
         for(int k = l*block_size; k < (l+1)*block_size; k++) 
             sck[k] = sgk[k] | (spk[k] & (k%block_size==0 ? (l==0 ? 0: sscl[l-1]) : sck[k-1]));
 }
 
+//Computes the carry bit for each group within each section. 
 void compute_group_carry(){
     for(int k = 0; k < nsections; k++)  //This is the loop that gets parallelized
         for(int j = k*block_size; j < (k+1)*block_size; j++) 
             gcj[j] = ggj[j] | (gpj[j] & (j%block_size==0 ? (k==0 ? 0 : sck[k-1]) : gcj[j-1]));
 }
 
+//Computes the carry bit for each bit within each group. 
 void compute_carry(){
     for(int j = 0; j < ngroups; j++)  //This is the loop that gets parallelized
         for(int i = j*block_size; i < (j+1)*block_size; i++)
             ci[i] = gi[i] | (pi[i] & (i%block_size==0 ? (j==0 ? 0 : gcj[j-1]) : ci[i-1]));
 }
 
+//Compute the final sum using the xor addition formula wrt carries
 void compute_sum(){
     for(int i = 0; i < bits; i++) //This loop could be parallelized
         sumi[i] = bin1[i] ^ bin2[i] ^ (i==0 ? 0 : ci[i-1]);

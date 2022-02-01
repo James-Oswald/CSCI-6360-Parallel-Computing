@@ -6,7 +6,7 @@ make all -f /mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/makefile -C 
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jan 25 16:02:52 2022
+# Make data base, printed on Sat Jan 29 22:08:11 2022
 
 # Variables
 
@@ -51,11 +51,11 @@ VSCODE_CWD = /mnt/c/Users/James/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/james/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/home/james/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/d/Software/VulkanSDK/Bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/Software/miniconda3/condabin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/d/Oculus/Support/oculus-runtime:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.0/bin:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/d/Matlab/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/d/Software/Python/Python38:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/msys64/mingw64/bin:/mnt/c/msys64/usr/bin:/mnt/c/Users/James/AppData/Roaming/npm:/mnt/c/Users/James/Desktop/tools/apache-maven-3.6.0/bin:/mnt/c/Users/James/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/d/Racket:/mnt/d/Programming/gvim82/vim/vim82:/mnt/c/msys64/clang64/bin:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/James/AppData/Local/Programs/Python/Python37-32:/mnt/d/Programming/emcc/emsdk/upstream/emscripten:/mnt/d/Programming/PHP:/mnt/d/Programming/Maven/apache-maven-3.6.3/bin:/mnt/c/Program Files/Git/cmd:/mnt/d/Software/MikTex/miktex/bin/x64/:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/include:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/d/Programming/APL/Dylog:/mnt/d/Programming/erl-24.1/bin:/mnt/d/Programming/Mozart1/bin:/mnt/d/Software/swipl/bin:/mnt/c/Users/James/AppData/Roaming/local/bin:/mnt/c/Users/James/.elan/bin:/mnt/d/Software/Python/Python38/:/mnt/d/Software/Python/Python38/Scripts/:/mnt/d/Programming/JavaVersions/jdk-15.0.2/bin:/mnt/c/Users/James/Desktop/tools/apache-maven-3.6.0/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Users/James/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/d/Racket:/mnt/d/Programming/gvim82/vim/vim82:/mnt/c/msys64/clang64/bin:/mnt/c/Users/James/AppData/Roaming/npm:/mnt/d/Programming/PHP:/mnt/d/Programming/Maven/apache-maven-3.6.3/bin:/mnt/c/Users/James/AppData/Local/Microsoft/WindowsApps:/mnt/d/Programming/APL/Dylog:/mnt/c/Program Files/NVIDIA Corporation/NVSMI:/mnt/c/Users/James/AppData/Roaming/cabal/bin:/mnt/c/tools/ghc-9.0.1/bin:/mnt/c/tools/msys64:/snap/bin
+PATH = /home/james/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/home/james/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/d/Software/VulkanSDK/Bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/d/Software/miniconda3/condabin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/d/Oculus/Support/oculus-runtime:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.0/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/d/Matlab/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/d/Software/Python/Python38:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/msys64/mingw64/bin:/mnt/c/msys64/usr/bin:/mnt/c/Users/James/AppData/Roaming/npm:/mnt/c/Users/James/Desktop/tools/apache-maven-3.6.0/bin:/mnt/c/Users/James/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/d/Racket:/mnt/d/Programming/gvim82/vim/vim82:/mnt/c/msys64/clang64/bin:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/James/AppData/Local/Programs/Python/Python37-32:/mnt/d/Programming/emcc/emsdk/upstream/emscripten:/mnt/d/Programming/PHP:/mnt/d/Programming/Maven/apache-maven-3.6.3/bin:/mnt/c/Program Files/Git/cmd:/mnt/d/Software/MikTex/miktex/bin/x64/:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/include:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/d/Programming/APL/Dylog:/mnt/d/Programming/erl-24.1/bin:/mnt/d/Programming/Mozart1/bin:/mnt/d/Software/swipl/bin:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Users/James/AppData/Roaming/local/bin:/mnt/c/Users/James/.elan/bin:/mnt/d/Software/Python/Python38/:/mnt/d/Software/Python/Python38/Scripts/:/mnt/d/Programming/JavaVersions/jdk-15.0.2/bin:/mnt/c/Users/James/Desktop/tools/apache-maven-3.6.0/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Users/James/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/d/Racket:/mnt/d/Programming/gvim82/vim/vim82:/mnt/c/msys64/clang64/bin:/mnt/c/Users/James/AppData/Roaming/npm:/mnt/d/Programming/PHP:/mnt/d/Programming/Maven/apache-maven-3.6.3/bin:/mnt/c/Users/James/AppData/Local/Microsoft/WindowsApps:/mnt/d/Programming/APL/Dylog:/mnt/c/Program Files/NVIDIA Corporation/NVSMI:/mnt/c/Users/James/AppData/Roaming/cabal/bin:/mnt/c/tools/ghc-9.0.1/bin:/mnt/c/tools/msys64:/snap/bin:/usr/local/cuda-11.2/bin:/my/custom/path
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f9c708d0-d244-4485-b322-cd0012c6d440.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-78f00265-9418-474b-baea-be539ab278a5.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -69,7 +69,7 @@ PWD = /mnt/d/program/CSCI-6360-Parallel-Computing
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/15_interop
+WSL_INTEROP = /run/WSL/12_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
 # environment
@@ -146,8 +146,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=4/96=4%
+# Load=69/1024=7%, Rehash=0, Collisions=4/97=4%
 
 # Pattern-specific Variable Values
 
@@ -225,6 +227,6 @@ all:
 # strcache performance: lookups = 13 / hit rate = 46%
 # hash-table stats:
 # Load=7/8192=0%, Rehash=0, Collisions=0/13=0%
-# Finished Make data base on Tue Jan 25 16:02:52 2022
+# Finished Make data base on Sat Jan 29 22:08:11 2022
 
  
