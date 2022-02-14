@@ -20,27 +20,27 @@
 #define nsupersupersections nsupersections/block_size
 
 //Global definitions of the various arrays used in steps for easy access
-__global__ int gi[bits] = {0};
-__global__ int pi[bits] = {0};
-__global__ int ci[bits] = {0};
+int* gi;
+int* pi;
+int* ci;
 
-__global__ int ggj[ngroups] = {0};
-__global__ int gpj[ngroups] = {0};
-__global__ int gcj[ngroups] = {0};
+int* ggj;
+int* gpj;
+int* gcj;
 
-__global__ int sgk[nsections] = {0};
-__global__ int spk[nsections] = {0};
-__global__ int sck[nsections] = {0};
+int* sgk;
+int* spk;
+int* sck;
 
-__global__ int ssgl[nsupersections] = {0} ;
-__global__ int sspl[nsupersections] = {0} ;
-__global__ int sscl[nsupersections] = {0} ;
+int* ssgl;
+int* sspl;
+int* sscl;
 
-__global__ int sssgm[nsupersupersections] = {0} ;
-__global__ int ssspm[nsupersupersections] = {0} ;
-__global__ int ssscm[nsupersupersections] = {0} ;
+int* ssspm;
+int* sssgm;
+int* ssscm;
 
-int sumi[bits] = {0};
+int* sumi;
 
 int sumrca[bits] = {0};
 
