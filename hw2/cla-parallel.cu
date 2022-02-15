@@ -21,7 +21,7 @@
 
 //Global definitions of the various arrays used in steps for easy access
 int* gi;
-int* pi;
+int* pi; 
 int* ci;
 
 int* ggj;
@@ -98,42 +98,34 @@ __global__ void compute_gp(){
 // ADAPT AS CUDA KERNEL 
 /***********************************************************************************************************/
 
+
+__device__ void compute_mult(int* chunk, int* generate){
+	
+}
+
 __global__ void compute_chunk_gp(size_t nchunks, int* chunkg, int* chunkp, int* subchunkg, int* subchunkp)
 {
     size_t index = blockDim.x * blockIdx.x + threadIdx.x;
-    if(index % nchunks == 0){
-        subchunkg[]
-    }
+	int jstart = index*block_size;
+	int* ggj_chunk = gi+jstart;
+	int* gpj_chunk = pi+jstart;
+	for(int i = 0; i < block_size; i++)
+	{
+		int mult = ggj_group[i]; //grabs the g_i term for the multiplication
+		for(int ii = block_size-1; ii > i; ii--)
+		{
+			mult &= gpj_group[ii]; //grabs the p_i terms and multiplies it with the previously multiplied stuff (or the g_i term if first round)
+		}
+		sum |= mult; //sum up each of these things with an or
+	}
+	ggj[j] = sum;
 
-    for(int j = 0; j < ngroups; j++)
-    {
-        int jstart = j*block_size;
-        int* ggj_group = grab_slice(gi,jstart,block_size);
-        int* gpj_group = grab_slice(pi,jstart,block_size);
-
-        int sum = 0;
-        for(int i = 0; i < block_size; i++)
-        {
-            int mult = ggj_group[i]; //grabs the g_i term for the multiplication
-            for(int ii = block_size-1; ii > i; ii--)
-            {
-                mult &= gpj_group[ii]; //grabs the p_i terms and multiplies it with the previously multiplied stuff (or the g_i term if first round)
-            }
-            sum |= mult; //sum up each of these things with an or
-        }
-        ggj[j] = sum;
-
-        int mult = gpj_group[0];
-        for(int i = 1; i < block_size; i++)
-        {
-            mult &= gpj_group[i];
-        }
-        gpj[j] = mult;
-
-  // free from grab_slice allocation
-  free(ggj_group);
-  free(gpj_group);
-    }
+	int mult = gpj_group[0];
+	for(int i = 1; i < block_size; i++)
+	{
+		mult &= gpj_group[i];
+	}
+	gpj[j] = mult;
 }
 
 /***********************************************************************************************************/
