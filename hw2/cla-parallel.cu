@@ -40,6 +40,10 @@ int* ssspm;
 int* sssgm;
 int* ssscm;
 
+int* dbin1;
+int* dbin2;
+int* dsumi;
+
 int* sumi;
 
 int sumrca[bits] = {0};
@@ -52,333 +56,111 @@ int* bin2=NULL;
 char* hex1=NULL;
 char* hex2=NULL;
 
-void read_input()
-{
-  char* in1 = (char *)calloc(input_size+1, sizeof(char));
-  char* in2 = (char *)calloc(input_size+1, sizeof(char));
-
-  if( 1 != scanf("%s", in1))
-    {
-      printf("Failed to read input 1\n");
-      exit(-1);
-    }
-  if( 1 != scanf("%s", in2))
-    {
-      printf("Failed to read input 2\n");
-      exit(-1);
-    }
-  
-  hex1 = grab_slice_char(in1,0,input_size+1);
-  hex2 = grab_slice_char(in2,0,input_size+1);
-  
-  free(in1);
-  free(in2);
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-/*void compute_gp()
-{
-    for(int i = 0; i < bits; i++)
-    {
-        gi[i] = bin1[i] & bin2[i];
-        pi[i] = bin1[i] | bin2[i];
-    }
-}*/
-
-__global__ void compute_gp(){
-    size_t index = blockDim.x * blockIdx.x + threadIdx.x;
-    gi[index] = bin1[index] & bin2[index];
-    pi[index] = bin1[index] | bin2[index];
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-
-__device__ void compute_mult(int* chunk, int* generate){
-	
-}
-
-__global__ void compute_chunk_gp(size_t nchunks, int* chunkg, int* chunkp, int* subchunkg, int* subchunkp)
-{
-    size_t index = blockDim.x * blockIdx.x + threadIdx.x;
-	int jstart = index*block_size;
-	int* ggj_chunk = gi+jstart;
-	int* gpj_chunk = pi+jstart;
-	for(int i = 0; i < block_size; i++)
-	{
-		int mult = ggj_group[i]; //grabs the g_i term for the multiplication
-		for(int ii = block_size-1; ii > i; ii--)
-		{
-			mult &= gpj_group[ii]; //grabs the p_i terms and multiplies it with the previously multiplied stuff (or the g_i term if first round)
-		}
-		sum |= mult; //sum up each of these things with an or
+void read_input(){
+	char* in1 = (char *)calloc(input_size+1, sizeof(char));
+	char* in2 = (char *)calloc(input_size+1, sizeof(char));
+	if( 1 != scanf("%s", in1)){
+		printf("Failed to read input 1\n");
+		exit(-1);
 	}
-	ggj[j] = sum;
-
-	int mult = gpj_group[0];
-	for(int i = 1; i < block_size; i++)
-	{
-		mult &= gpj_group[i];
+	if( 1 != scanf("%s", in2)){
+		printf("Failed to read input 2\n");
+		exit(-1);
 	}
-	gpj[j] = mult;
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_section_gp()
-{
-  for(int k = 0; k < nsections; k++)
-    {
-      int kstart = k*block_size;
-      int* sgk_group = grab_slice(ggj,kstart,block_size);
-      int* spk_group = grab_slice(gpj,kstart,block_size);
-      
-      int sum = 0;
-      for(int i = 0; i < block_size; i++)
-        {
-    int mult = sgk_group[i];
-    for(int ii = block_size-1; ii > i; ii--)
-            {
-        mult &= spk_group[ii];
-            }
-    sum |= mult;
-        }
-      sgk[k] = sum;
-      
-      int mult = spk_group[0];
-      for(int i = 1; i < block_size; i++)
-        {
-    mult &= spk_group[i];
-        }
-      spk[k] = mult;
-      
-      // free from grab_slice allocation
-      free(sgk_group);
-      free(spk_group);
-    }
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_super_section_gp()
-{
-  for(int l = 0; l < nsupersections ; l++)
-    {
-      int lstart = l*block_size;
-      int* ssgl_group = grab_slice(sgk,lstart,block_size);
-      int* sspl_group = grab_slice(spk,lstart,block_size);
-      
-      int sum = 0;
-      for(int i = 0; i < block_size; i++)
-        {
-    int mult = ssgl_group[i];
-    for(int ii = block_size-1; ii > i; ii--)
-            {
-        mult &= sspl_group[ii];
-            }
-    sum |= mult;
-        }
-      ssgl[l] = sum;
-      
-      int mult = sspl_group[0];
-      for(int i = 1; i < block_size; i++)
-        {
-    mult &= sspl_group[i];
-        }
-      sspl[l] = mult;
-      
-      // free from grab_slice allocation
-      free(ssgl_group);
-      free(sspl_group);
-    }
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_super_super_section_gp()
-{
-  for(int m = 0; m < nsupersupersections ; m++)
-    {
-      int mstart = m*block_size;
-      int* sssgm_group = grab_slice(ssgl,mstart,block_size);
-      int* ssspm_group = grab_slice(sspl,mstart,block_size);
-      
-      int sum = 0;
-      for(int i = 0; i < block_size; i++)
-        {
-    int mult = sssgm_group[i];
-    for(int ii = block_size-1; ii > i; ii--)
-            {
-        mult &= ssspm_group[ii];
-            }
-    sum |= mult;
-        }
-      sssgm[m] = sum;
-      
-      int mult = ssspm_group[0];
-      for(int i = 1; i < block_size; i++)
-        {
-    mult &= ssspm_group[i];
-        }
-      ssspm[m] = mult;
-      
-      // free from grab_slice allocation
-      free(sssgm_group);
-      free(ssspm_group);
-    }
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_super_super_section_carry()
-{
-  for(int m = 0; m < nsupersupersections; m++)
-    {
-      int ssscmlast=0;
-      if(m==0)
-        {
-    ssscmlast = 0;
-        }
-      else
-        {
-    ssscmlast = ssscm[m-1];
-        }
-      
-      ssscm[m] = sssgm[m] | (ssspm[m]&ssscmlast);
-    }
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_super_section_carry()
-{
-  for(int l = 0; l < nsupersections; l++)
-    {
-      int sscllast=0;
-      if(l%block_size == block_size-1)
-        {
-    sscllast = ssscm[l/block_size];
-        }
-      else if( l != 0 )
-        {
-    sscllast = sscl[l-1];
-        }
-      
-      sscl[l] = ssgl[l] | (sspl[l]&sscllast);
-    }
-}
-
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_section_carry()
-{
-  for(int k = 0; k < nsections; k++)
-    {
-      int scklast=0;
-      if(k%block_size==block_size-1)
-        {
-    scklast = sscl[k/block_size];
-        }
-      else if( k != 0 )
-        {
-    scklast = sck[k-1];
-        }
-      
-      sck[k] = sgk[k] | (spk[k]&scklast);
-    }
+	hex1 = grab_slice_char(in1,0,input_size+1);
+	hex2 = grab_slice_char(in2,0,input_size+1);
+	free(in1);
+	free(in2);
 }
 
 
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_group_carry()
-{
-  for(int j = 0; j < ngroups; j++)
-    {
-      int gcjlast=0;
-      if(j%block_size==block_size-1)
-        {
-    gcjlast = sck[j/block_size];
-        }
-      else if( j != 0 )
-        {
-    gcjlast = gcj[j-1];
-        }
-      
-      gcj[j] = ggj[j] | (gpj[j]&gcjlast);
-    }
+__global__ void compute_gp(int* b1, int* b2, int* g, int* p){
+    size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+    g[i] = b1[i] & b2[i];
+    p[i] = b1[i] | b2[i];
 }
 
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_carry()
-{
-  for(int i = 0; i < bits; i++)
-    {
-      int clast=0;
-      if(i%block_size==block_size-1)
-        {
-    clast = gcj[i/block_size];
-        }
-      else if( i != 0 )
-        {
-    clast = ci[i-1];
-        }
-      
-      ci[i] = gi[i] | (pi[i]&clast);
-    }
+__device__ compute_g(int* gGroup, int* pGroup){
+	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	for(int ii = block_size-1; ii > i; ii--)
+		gGroup[i] &= pGroup[ii]; //grabs the p_i terms and multiplies it with the previously multiplied stuff (or the g_i term if first round)
+	__syncthreads();
+	if(i < 16){
+		gGroup[i] |= gGroup[i + 16];
+		gGroup[i] |= gGroup[i + 8];
+		gGroup[i] |= gGroup[i + 4];
+		gGroup[i] |= gGroup[i + 1];
+	}
 }
 
-/***********************************************************************************************************/
-// ADAPT AS CUDA KERNEL 
-/***********************************************************************************************************/
-
-void compute_sum()
-{
-  for(int i = 0; i < bits; i++)
-    {
-      int clast=0;
-      if(i==0)
-        {
-    clast = 0;
-        }
-      else
-        {
-    clast = ci[i-1];
-        }
-      sumi[i] = bin1[i] ^ bin2[i] ^ clast;
-    }
+__device__ compute_p(int* pGroup){
+	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	if(i < 16){
+		pGroup[i] |= pGroup[i + 16];
+		pGroup[i] |= pGroup[i + 8];
+		pGroup[i] |= pGroup[i + 4];
+		pGroup[i] |= pGroup[i + 1];
+	}
 }
 
-void cla()
-{
-  /***********************************************************************************************************/
-  // ADAPT ALL THESE FUNCTUIONS TO BE SEPARATE CUDA KERNEL CALL
-  // NOTE: Kernel calls are serialized by default per the CUDA kernel call scheduler
-  /***********************************************************************************************************/
-    compute_gp();
-    compute_group_gp();
+__global__ void compute_chunk_gp(int* subchunkg, int* subchunkp, int* chunkg, int* chunkp){
+	__shared__ int gshared[blockDim.x * block_size];
+	__shared__ int pshared[blockDim.x * block_size];
+	size_t index = blockDim.x * blockIdx.x + threadIdx.x;
+	gshared[index] = subchunkg[index];
+	pshared[index] = subchunkp[index];
+	int start = index*block_size;
+	int* gGroup = gshared+start; //pointer to the group of 32 g's this thread is reducing
+	int* pGroup = pshared+start; //pointer to the group of 32 p's this thread is reducing
+	__syncthreads();
+	compute_g<<<1,block_size>>>(gGroup, pGroup);
+	chunkg[index] = gGroup[0];
+	compute_p<<<1,block_size>>>(pGroup);
+	chunkp[index] = pGroup[0];
+}
+
+__global__ void compute_sss_carry(int* sssg, int* sssp, int* sssc){
+	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	for(int )
+	sssc[i] = sssg[i] | (sssp[i] & (i==0 ? 0 : sscl[l-1]));
+}
+
+__global__ void compute_chunk_carry(int* chunkg, int* chunkp, int* chunkc, int* subchunkc){
+	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	for(int j = i*block_size; j < (i+1)*block_size; j++){
+		subchunkc[j] = 
+	}
+}
+
+void cla(){
+	cudaMallocManaged((void**)&dsumi, bits);
+	cudaMallocManaged((void**)&dbin1, bits);
+	cudaMallocManaged((void**)&dbin2, bits);
+	cudaMallocManaged((void**)&gi, bits);
+	cudaMallocManaged((void**)&pi, bits);
+	cudaMallocManaged((void**)&ci, bits);
+	cudaMallocManaged((void**)&ggj, ngroups);
+	cudaMallocManaged((void**)&gpj, ngroups);
+	cudaMallocManaged((void**)&gcj, ngroups);
+	cudaMallocManaged((void**)&sgk, nsections);
+	cudaMallocManaged((void**)&spk, nsections);
+	cudaMallocManaged((void**)&sck, nsections);
+	cudaMallocManaged((void**)&ssgl, nsupersections);
+	cudaMallocManaged((void**)&sspl, nsupersections);
+	cudaMallocManaged((void**)&sscl, nsupersections);
+	cudaMallocManaged((void**)&sssgm, nsupersupersections);
+	cudaMallocManaged((void**)&ssspm, nsupersupersections);
+	cudaMallocManaged((void**)&ssscm, nsupersupersections);
+	cudaMemcpy((void*)dbin1, bin1, bits, cudaMemcpyHostToDevice);
+	cudaMemcpy((void*)dbin2, bin2, bits, cudaMemcpyHostToDevice);
+
+	const int nthreads = 32;
+    compute_gp<<<bits,nthreads>>>(dbin1, dbin2, gi, pi);
+    compute_chunk_gp<<<ngroups,nthreads>>>(gi, pi, ggj, gpj);
+	compute_chunk_gp<<<nsections,nthreads>>>(ggj, gpj, sgk, spk);
+	compute_chunk_gp<<<nsupersections,nthreads>>>(sgk, spk, ssgl, sspl);
+	compute_chunk_gp<<<nsupersupersections,nthreads>>>(ssgl, sspl, sssgm, ssspm);
+
     compute_section_gp();
     compute_super_section_gp();
     compute_super_super_section_gp();
@@ -388,10 +170,6 @@ void cla()
     compute_group_carry();
     compute_carry();
     compute_sum();
-
-  /***********************************************************************************************************/
-  // INSERT RIGHT CUDA SYNCHRONIZATION AT END!
-  /***********************************************************************************************************/
 }
 
 void ripple_carry_adder()
