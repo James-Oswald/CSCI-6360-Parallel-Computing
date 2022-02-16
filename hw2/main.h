@@ -28,7 +28,7 @@
 int rand_in_range(int min, int max);
 char hex_lookup(int in);
 char* generate_random_hex(size_t len);
-char* hex_to_binary_single(char theDigit);
+const char* hex_to_binary_single(char theDigit);
 char* hex_to_binary(char* hexString);
 void reverse_string(char* str, size_t len);
 int* grab_slice(int* input, int starti, int length);
@@ -149,9 +149,9 @@ char* int_to_string(int* in, size_t len)
 /* hex_to_binary_single **********************************************/
 /*********************************************************************/
 
-char* hex_to_binary_single(char theDigit)
+const char* hex_to_binary_single(char theDigit)
 {
-    char* binaryVersion;
+    const char* binaryVersion;
     switch(theDigit)
     {
         case '0': binaryVersion = "0000"; break;
