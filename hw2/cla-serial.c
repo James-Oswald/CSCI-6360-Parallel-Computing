@@ -290,19 +290,18 @@ void compute_group_carry()
 
 void compute_carry()
 {
-  for(int i = 0; i < bits; i++)
+  	for(int i = 0; i < bits; i++)
     {
-      int clast=0;
-      if(i%block_size==block_size-1)
+      	int clast=0;
+      	if(i%block_size==block_size-1)
         {
-	  clast = gcj[i/block_size];
+	  		clast = gcj[i/block_size];
         }
-      else if( i != 0 )
+      	else if( i != 0 )
         {
-	  clast = ci[i-1];
+	  		clast = ci[i-1];
         }
-      
-      ci[i] = gi[i] | (pi[i]&clast);
+      	ci[i] = gi[i] | (pi[i]&clast);
     }
 }
 

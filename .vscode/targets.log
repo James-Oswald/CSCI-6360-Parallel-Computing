@@ -5,12 +5,12 @@ make all -f /mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/makefile -C 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Wed Feb 16 00:30:02 2022
+# Make data base, printed on Fri Feb 18 03:11:14 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -80,7 +80,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = james
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -226,6 +226,6 @@ all:
 # strcache performance: lookups = 13 / hit rate = 46%
 # hash-table stats:
 # Load=7/8192=0%, Rehash=0, Collisions=0/13=0%
-# Finished Make data base on Wed Feb 16 00:30:02 2022
+# Finished Make data base on Fri Feb 18 03:11:14 2022
 
  

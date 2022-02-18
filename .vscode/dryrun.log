@@ -1,5 +1,6 @@
 make all -f /mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/makefile -C /mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/ --dry-run --keep-going --print-directory
 make: Entering directory '/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1'
+ 
 gcc -Wall -g cla.c -o cla
 make: Leaving directory '/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1'
  
