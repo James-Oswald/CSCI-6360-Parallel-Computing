@@ -6,15 +6,15 @@ make all -f /mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/makefile -C 
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Feb 18 03:11:14 2022
+# Make data base, printed on Fri Feb 18 12:29:13 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+ 
 # environment
 WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
@@ -56,7 +56,7 @@ PATH = /home/james/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/b
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-2df1a431-1af2-4375-8f70-ec6f6e143454.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-399871a7-1c46-4ccb-b171-81b7adfd3bf0.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -80,7 +80,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = james
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -147,8 +147,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=4/96=4%
+# Load=69/1024=7%, Rehash=0, Collisions=4/97=4%
 
 # Pattern-specific Variable Values
 
@@ -226,6 +228,6 @@ all:
 # strcache performance: lookups = 13 / hit rate = 46%
 # hash-table stats:
 # Load=7/8192=0%, Rehash=0, Collisions=0/13=0%
-# Finished Make data base on Fri Feb 18 03:11:14 2022
+# Finished Make data base on Fri Feb 18 12:29:13 2022
 
  

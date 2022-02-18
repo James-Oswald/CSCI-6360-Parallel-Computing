@@ -9,7 +9,7 @@
 //Touch these defines
 #define input_size 8388608 // hex digits 
 #define block_size 32
-#define verbose 1
+#define verbose 0
 
 //Do not touch these defines
 #define digits (input_size+1)
@@ -75,6 +75,7 @@ void read_input(int size){
 
 __global__ void compute_gp(const int* b1, const int* b2, int* g, int* p){
 	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	if(i>=bits) return;
 	g[i] = b1[i] & b2[i];
 	p[i] = b1[i] | b2[i];
 }
@@ -102,8 +103,10 @@ __global__ void compute_p(int* pGroup){
 	}
 }*/
 
+template<int nchunks>
 __global__ void compute_chunk_gp(const int* subchunkg, const int* subchunkp, int* chunkg, int* chunkp){
 	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	if(i>=nchunks) return;
 	int start = i*block_size;
 	const int* gGroup = subchunkg+start; 				//pointer to the group of 32 g's this thread is reducing
 	const int* pGroup = subchunkp+start; 	    //pointer to the group of 32 p's this thread is reducing
@@ -112,28 +115,33 @@ __global__ void compute_chunk_gp(const int* subchunkg, const int* subchunkp, int
 	int sum = 0;
 	for(int j = 0; j < block_size; j++){
 		int mult = gGroup[j];
-		for(int k = block_size-1; k > i; k--)
+		for(int k = block_size-1; k > j; k--)
 			mult &= pGroup[k];
 		sum |= mult;
 	}
 	chunkg[i] = sum;
 
 	//computing the prop
-	int mult = subchunkp[0];
+	int mult = pGroup[0];
 	for(int j = 1; j < block_size; j++)
 		mult &= pGroup[j];
 	chunkp[i] = mult;
 }
 
+template<int nchunks>
 __global__ void compute_chunk_carry(const int* subchunkg, const int* subchunkp, const int* chunkc, int* subchunkc){
 	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	if(i>=nchunks) return;
 	int carry = i == 0 ? 0 : chunkc[i-1];
-	for(int j = i*block_size; j < (i+1)*block_size; j++)
-		carry = (subchunkc[j] = subchunkg[j] | (subchunkp[j] & carry));
+	for(int j = i*block_size; j < (i+1)*block_size; j++){
+		subchunkc[j] = subchunkg[j] | (subchunkp[j] & carry);
+		carry = subchunkc[j];
+	}
 }
 
 __global__ void compute_sum(const int* b1, const int* b2, const int* c, int* sum){
 	size_t i = blockDim.x * blockIdx.x + threadIdx.x;
+	if(i>=bits) return;
 	int carry = i == 0 ? 0 : c[i-1];
 	sum[i] = b1[i] ^ b2[i] ^ carry;
 }
@@ -144,22 +152,38 @@ void cringePrint(int* thing, int size, const char* frmt = "%s\n"){
 	printf(frmt, rev);
 }
 
+
 void cla(){
+	cudaMallocManaged((void**)&gi, bits*sizeof(int));
+	cudaMallocManaged((void**)&pi, bits*sizeof(int));
+	cudaMallocManaged((void**)&ci, bits*sizeof(int));
+	cudaMallocManaged((void**)&ggj, ngroups*sizeof(int));
+	cudaMallocManaged((void**)&gpj, ngroups*sizeof(int));
+	cudaMallocManaged((void**)&gcj, ngroups*sizeof(int));
+	cudaMallocManaged((void**)&sgk, nsections*sizeof(int));
+	cudaMallocManaged((void**)&spk, nsections*sizeof(int));
+	cudaMallocManaged((void**)&sck, nsections*sizeof(int));
+	cudaMallocManaged((void**)&ssgl, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&sspl, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&sscl, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&sssgm, nsupersupersections*sizeof(int));
+	cudaMallocManaged((void**)&ssspm, nsupersupersections*sizeof(int));
+	cudaMallocManaged((void**)&ssscm, nsupersupersections*sizeof(int));
 	const int nthreads = 32;
 	compute_gp<<<bits,nthreads>>>(dbin1, dbin2, gi, pi);
-	compute_chunk_gp<<<ngroups,nthreads>>>(gi, pi, ggj, gpj);
-	compute_chunk_gp<<<nsections,nthreads>>>(ggj, gpj, sgk, spk);
-	compute_chunk_gp<<<nsupersections,nthreads>>>(sgk, spk, ssgl, sspl);
-	compute_chunk_gp<<<nsupersupersections,nthreads>>>(ssgl, sspl, sssgm, ssspm);
-	compute_chunk_carry<<<1,1>>>(sssgm, ssspm, nullptr, ssscm);
-	compute_chunk_carry<<<nsupersupersections,nthreads>>>(ssgl, sspl, ssscm, sscl);
-	compute_chunk_carry<<<nsupersections,nthreads>>>(sgk, spk, sscl, sck);
-	compute_chunk_carry<<<nsections,nthreads>>>(ggj, gpj, sck, gcj);
-	compute_chunk_carry<<<ngroups,nthreads>>>(gi, pi, gcj, ci);
+	compute_chunk_gp<ngroups><<<ngroups,nthreads>>>(gi, pi, ggj, gpj);
+	compute_chunk_gp<nsections><<<nsections,nthreads>>>(ggj, gpj, sgk, spk);
+	compute_chunk_gp<nsupersections><<<nsupersections,nthreads>>>(sgk, spk, ssgl, sspl);
+	compute_chunk_gp<nsupersupersections><<<nsupersupersections,nthreads>>>(ssgl, sspl, sssgm, ssspm);
+	compute_chunk_carry<1><<<1,nthreads>>>(sssgm, ssspm, nullptr, ssscm);
+	compute_chunk_carry<nsupersupersections><<<nsupersupersections,nthreads>>>(ssgl, sspl, ssscm, sscl);
+	compute_chunk_carry<nsupersections><<<nsupersections,nthreads>>>(sgk, spk, sscl, sck);
+	compute_chunk_carry<nsections><<<nsections,nthreads>>>(ggj, gpj, sck, gcj);
+	compute_chunk_carry<ngroups><<<ngroups,nthreads>>>(gi, pi, gcj, ci);
 	compute_sum<<<bits,nthreads>>>(dbin1, dbin2, ci, dsumi);
 	cudaDeviceSynchronize();
-	int hsumi[bits];
-	cudaMemcpy(hsumi, dsumi, bits*sizeof(int), cudaMemcpyDeviceToHost);
+	//int hsumi[bits];
+	//cudaMemcpy(hsumi, dsumi, bits*sizeof(int), cudaMemcpyDeviceToHost);
 	//cringePrint(hsumi, bits, "%.20s\n");
 }
 
@@ -185,13 +209,10 @@ void check_cla_rca(const int size){
 	printf("Check Complete: CLA and RCA are equal\n");
 }
 
-
-
 /*
-
 void babyCLA(){	
 
-	cudaMallocManaged((void**)&ssgl, nsupersections*sizeof(int));
+	/*cudaMallocManaged((void**)&ssgl, nsupersections*sizeof(int));
 	cudaMallocManaged((void**)&sspl, nsupersections*sizeof(int));
 	cudaMallocManaged((void**)&sscl, nsupersections*sizeof(int));
 	cudaMallocManaged((void**)&sssgm, nsupersupersections*sizeof(int));
@@ -200,7 +221,7 @@ void babyCLA(){
 	const int nthreads = 1;
 	
 	compute_gp<<<nsupersections,nthreads>>>(dbin1, dbin2, ssgl, sspl);
-	cudaDeviceSynchronize();
+	/*cudaDeviceSynchronize();
 	int hssgl[nsupersections];
 	int hsspl[nsupersections];
 	cudaMemcpy(hssgl, ssgl, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
@@ -208,8 +229,8 @@ void babyCLA(){
 	cringePrint(hssgl, nsupersections, "G1: %s\n");
 	cringePrint(hsspl, nsupersections, "P1: %s\n");
 	
-	compute_chunk_gp<<<nsupersupersections, nthreads, 2*nsupersections>>>(nsupersupersections, ssgl, sspl, sssgm, ssspm);
-	cudaDeviceSynchronize();
+	compute_chunk_gp<<<nsupersupersections, nthreads>>>(nsupersupersections, ssgl, sspl, sssgm, ssspm);
+	/*cudaDeviceSynchronize();
 	int hsssgm[nsupersupersections];
 	int hssspm[nsupersupersections];
 	cudaMemcpy(hsssgm, sssgm, nsupersupersections*sizeof(int), cudaMemcpyDeviceToHost);
@@ -222,42 +243,45 @@ void babyCLA(){
 	cringePrint(hsspl, nsupersections, "P1: %s\n");
 	
 	compute_chunk_carry<<<1,nthreads>>>(1, sssgm, ssspm, nullptr, ssscm);
-	cudaDeviceSynchronize();
+	/*cudaDeviceSynchronize();
 	int hssscm[nsupersupersections];
 	cudaMemcpy(hssscm, ssscm, nsupersupersections*sizeof(int), cudaMemcpyDeviceToHost);
 	cringePrint(hssscm, nsupersupersections, "C1: %s\n");
 	
-	/*cudaMemcpy(hssgl, ssgl, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
-	cudaMemcpy(hsspl, sspl, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
-	cringePrint(hssgl, nsupersections, "G1: %s\n");
-	cringePrint(hsspl, nsupersections, "P1: %s\n");
+	//cudaMemcpy(hssgl, ssgl, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
+	//cudaMemcpy(hsspl, sspl, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
+	//cringePrint(hssgl, nsupersections, "G1: %s\n");
+	//cringePrint(hsspl, nsupersections, "P1: %s\n");
 
 	compute_chunk_carry<<<nsupersupersections,nthreads>>>(nsupersupersections, ssgl, sspl, ssscm, sscl);
-	cudaDeviceSynchronize();
+	/*cudaDeviceSynchronize();
 	int hsscl[nsupersections];
 	cudaMemcpy(hsscl, sscl, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
 	cringePrint(hsscl, nsupersections, "C2: %s\n");
 
-	int hbin1[nsupersections];
-	int hbin2[nsupersections];
-	cudaMemcpy(hbin1, dbin1, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
-	cudaMemcpy(hbin2, dbin2, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
-	cringePrint(hbin1, nsupersections, "B1: %s\n");
-	cringePrint(hbin2, nsupersections, "B2: %s\n");
+	//int hbin1[nsupersections];
+	//int hbin2[nsupersections];
+	//cudaMemcpy(hbin1, dbin1, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
+	//cudaMemcpy(hbin2, dbin2, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
+	//cringePrint(hbin1, nsupersections, "B1: %s\n");
+	//cringePrint(hbin2, nsupersections, "B2: %s\n");
 
 	compute_sum<<<nsupersections,nthreads>>>(dbin1, dbin2, sscl, dsumi);
 	cudaDeviceSynchronize();
+
+	/*cudaDeviceSynchronize();
 	int hsumi[nsupersections];
 	cudaMemcpy(hsumi, dsumi, nsupersections*sizeof(int), cudaMemcpyDeviceToHost);
 	cringePrint(hsumi, nsupersections, "S0: %s\n");
-}
+}*/
 
+/*
 int main(){
 	int size = 32*32;
 
-	//char* hex1 = generate_random_hex(size);
-	//char* hex2 = generate_random_hex(size);
-	read_input(size);
+	char* hex1 = generate_random_hex(size);
+	char* hex2 = generate_random_hex(size);
+	//read_input(size);
 	char* hexa = prepend_non_sig_zero(hex1);
 	char* hexb = prepend_non_sig_zero(hex2);
 	bin1 = gen_formated_binary_from_hex(hexa);
@@ -265,6 +289,12 @@ int main(){
 	cudaMallocManaged((void**)&dbin1, nsupersections*sizeof(int));
 	cudaMallocManaged((void**)&dbin2, nsupersections*sizeof(int));
 	cudaMallocManaged((void**)&dsumi, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&ssgl, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&sspl, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&sscl, nsupersections*sizeof(int));
+	cudaMallocManaged((void**)&sssgm, nsupersupersections*sizeof(int));
+	cudaMallocManaged((void**)&ssspm, nsupersupersections*sizeof(int));
+	cudaMallocManaged((void**)&ssscm, nsupersupersections*sizeof(int));
 	cudaMemcpy(dbin1, bin1, nsupersections*sizeof(int), cudaMemcpyHostToDevice);
 	cudaMemcpy(dbin2, bin2, nsupersections*sizeof(int), cudaMemcpyHostToDevice);
 	babyCLA();
@@ -301,7 +331,7 @@ int main(int argc, char *argv[]){
 	if (randomGenerateFlag == 0){
 		read_input(input_size);
 	}else{
-		srand( deterministic_seed );
+		srand(deterministic_seed);
 		hex1 = generate_random_hex(input_size);
 		hex2 = generate_random_hex(input_size);
 	}
@@ -317,26 +347,13 @@ int main(int argc, char *argv[]){
 	cudaMallocManaged((void**)&dbin1, bits*sizeof(int));
 	cudaMallocManaged((void**)&dbin2, bits*sizeof(int));
 	cudaMallocManaged((void**)&dsumi, bits*sizeof(int));
-	cudaMallocManaged((void**)&gi, bits*sizeof(int));
-	cudaMallocManaged((void**)&pi, bits*sizeof(int));
-	cudaMallocManaged((void**)&ci, bits*sizeof(int));
-	cudaMallocManaged((void**)&ggj, ngroups*sizeof(int));
-	cudaMallocManaged((void**)&gpj, ngroups*sizeof(int));
-	cudaMallocManaged((void**)&gcj, ngroups*sizeof(int));
-	cudaMallocManaged((void**)&sgk, nsections*sizeof(int));
-	cudaMallocManaged((void**)&spk, nsections*sizeof(int));
-	cudaMallocManaged((void**)&sck, nsections*sizeof(int));
-	cudaMallocManaged((void**)&ssgl, nsupersections*sizeof(int));
-	cudaMallocManaged((void**)&sspl, nsupersections*sizeof(int));
-	cudaMallocManaged((void**)&sscl, nsupersections*sizeof(int));
-	cudaMallocManaged((void**)&sssgm, nsupersupersections*sizeof(int));
-	cudaMallocManaged((void**)&ssspm, nsupersupersections*sizeof(int));
-	cudaMallocManaged((void**)&ssscm, nsupersupersections*sizeof(int));
 	cudaMemcpy(dbin1, bin1, bits*sizeof(int), cudaMemcpyHostToDevice);
 	cudaMemcpy(dbin2, bin2, bits*sizeof(int), cudaMemcpyHostToDevice);
+	
 	start_time = clock_now();
 	cla();
 	end_time = clock_now();
+
 	cudaMemcpy(sumi, dsumi, bits*sizeof(int), cudaMemcpyDeviceToHost);
 	printf("CLA Completed in %llu cycles\n", (end_time - start_time));
 
