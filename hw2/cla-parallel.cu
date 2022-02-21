@@ -189,7 +189,7 @@ void ripple_carry_adder(){
 //This is the built in RCA comparison
 void check_cla_rca(){
 	for(int i = 0; i < bits; i++){
-		if( sumrca[i] != sumi[i]){
+		if(sumrca[i] != sumi[i]){
 			printf("Check: Found sumrca[%d] = %d, not equal to sumi[%d] = %d - stopping check here!\n",
 				i, sumrca[i], i, sumi[i]);
 			printf("bin1[%d] = %d, bin2[%d]=%d, gi[%d]=%d, pi[%d]=%d, ci[%d]=%d, ci[%d]=%d\n",
@@ -252,7 +252,7 @@ int main(int argc, char *argv[]){
 
 	//Copy outputs back client side for checking
 	cudaMemcpy(sumi, dsumi, bits*sizeof(int), cudaMemcpyDeviceToHost);
-	
+
 	long long unsigned int cycles = end_time - start_time;
 	printf("CLA Completed in %llu cycles (%lf seconds)\n", cycles, cycles/(double)512e6);
 
