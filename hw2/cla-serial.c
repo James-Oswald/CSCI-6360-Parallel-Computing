@@ -411,13 +411,15 @@ int main(int argc, char *argv[])
   cla();
   end_time = clock_now();
 
-  printf("CLA Completed in %llu cycles\n", (end_time - start_time));
+	long long unsigned int cycles = end_time - start_time;
+	printf("CLA Completed in %llu cycles (%lf seconds)\n", cycles, cycles/(double)512e6);
 
-  start_time = clock_now();
-  ripple_carry_adder();
-  end_time = clock_now();
+	start_time = clock_now();
+	ripple_carry_adder();
+	end_time = clock_now();
 
-  printf("RCA Completed in %llu cycles\n", (end_time - start_time));
+	cycles = end_time - start_time;
+	printf("RCA Completed in %llu cycles (%lf seconds)\n", cycles, cycles/(double)512e6);
 
   check_cla_rca();
 

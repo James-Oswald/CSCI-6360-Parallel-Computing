@@ -252,23 +252,22 @@ int main(int argc, char *argv[]){
 
 	//Copy outputs back client side for checking
 	cudaMemcpy(sumi, dsumi, bits*sizeof(int), cudaMemcpyDeviceToHost);
-	printf("CLA Completed in %llu cycles\n", (end_time - start_time));
+	
+	long long unsigned int cycles = end_time - start_time;
+	printf("CLA Completed in %llu cycles (%lf seconds)\n", cycles, cycles/(double)512e6);
 
 	start_time = clock_now();
 	ripple_carry_adder();
 	end_time = clock_now();
 
-	printf("RCA Completed in %llu cycles\n", (end_time - start_time));
+	cycles = end_time - start_time;
+	printf("RCA Completed in %llu cycles (%lf seconds)\n", cycles, cycles/(double)512e6);
 
 	check_cla_rca();
 
 	if( verbose==1 ){
 		int2str_result = int_to_string(sumi,bits);
 		hexSum = revbinary_to_hex(int2str_result,bits);
-		//printf("%.20s\n",hexSum);
-		//int2str_result = int_to_string(sumrca,bits);
-		//hexSum = revbinary_to_hex(int2str_result,bits);
-		//printf("%.20s\n",hexSum);
 	}
 
 	// free inputs fields allocated in read_input or gen random calls
@@ -283,9 +282,9 @@ int main(int argc, char *argv[]){
 	if( verbose==1 ){
 		printf("Hex Input\n");
 		printf("a   ");
-		//print_chararrayln(hexa);
+		print_chararrayln(hexa);
 		printf("b   ");
-		//print_chararrayln(hexb);
+		print_chararrayln(hexb);
 	}
 	if ( verbose==1 ){
 		printf("Hex Return\n");
@@ -297,8 +296,8 @@ int main(int argc, char *argv[]){
 	free(hexb);
 
 	if( verbose==1 ){
-		//printf(".20%s\n",hexSum);
-		//printf(".20%s\n",hexSum);
+		printf(".20%s\n",hexSum);
+		printf(".20%s\n",hexSum);
 	}
 	
 	free(hexSum);
