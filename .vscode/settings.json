@@ -1,19 +1,22 @@
 {
+    "C_Cpp.loggingLevel":"Debug",
     "files.associations": {
-        "random": "c"
+        "random": "c",
+        "stdio.h": "c",
+        "type_traits": "c",
+        "typeinfo": "c",
+        "utmpx.h": "c",
+        "sched.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c"
     },
-    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
-    "makefile.launchConfigurations": [
-        {
-            "cwd": "/mnt/d/program/CSCI-6360-Parallel-Computing",
-            "binaryPath": "/mnt/d/program/CSCI-6360-Parallel-Computing/cla",
-            "binaryArgs": []
-        },
-        {
-            "cwd": "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1",
-            "binaryPath": "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment1/cla",
-            "binaryArgs": []
-        }
-    ],
-    "editor.insertSpaces": true
+    "editor.insertSpaces": true,
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.cppStandard": "c++14",
+    "C_Cpp.default.compilerPath": "/usr/bin/mpicc",
+    "C_Cpp.default.compilerArgs": []
+    
 }
