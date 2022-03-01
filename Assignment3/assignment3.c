@@ -4,7 +4,7 @@
 #include<mpi.h>
 #include"clockcycle.h"
 
-#define numbersToSum 2<<20
+#define numbersToSum (2<<20)
 #define clock_frequency 512000000
 
 int MPI_P2P_reduce(const void *sendbuf, void *recvbuf, int count,
@@ -65,7 +65,7 @@ int main(int argc, char** argv){
     for(int i = 0; i < localArraySize; i++)
         localArray[i] = rank*localArraySize + i;
 
-    uint64_t result;
+    int64_t result;
 
     //My MPI_P2P_reduce reduction
     uint64_t startTime = clock_now();
@@ -77,7 +77,7 @@ int main(int argc, char** argv){
 
     //MPI_Reduce reduction
     startTime = clock_now();
-    uint64_t localSum = 0;  //Sum local array
+    int64_t localSum = 0;  //Sum local array
     for(int i = 0; i < localArraySize; i++)
         localSum += localArray[i];
     MPI_Reduce(&localSum, &result, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD); //reduce to single elm
@@ -86,7 +86,6 @@ int main(int argc, char** argv){
     if(rank == 0)
         printf("MPI_reduce\nResult:%lu\nTime:%lf\n", result, time_in_secs);
     
-
     free(localArray);
     MPI_Finalize();
     return 0;
