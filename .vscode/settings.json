@@ -10,7 +10,9 @@
         "array": "c",
         "string_view": "c",
         "initializer_list": "c",
-        "utility": "c"
+        "utility": "c",
+        "functional": "c",
+        "assert.h": "c"
     },
     "editor.insertSpaces": true,
     "C_Cpp.errorSquiggles": "Enabled",
