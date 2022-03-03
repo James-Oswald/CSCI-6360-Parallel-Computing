@@ -7,6 +7,7 @@
 extern "C" {
 #endif // __cplusplus
 
+#undef __clang__ //clang gives me issues on AiMOS for some reason
 #ifdef __clang__
 static inline uint64_t clock_now() {
 	return __builtin_readcyclecounter();
