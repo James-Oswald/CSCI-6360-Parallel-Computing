@@ -6,8 +6,7 @@
 #include<stdio.h>
 #include"clockcycle.h"
 
-extern void cudaInit(int rank, size_t localArraySize);
-extern void cudaReduce(const double* localArray, double* result);
+#include"reduce-cuda.h"
 
 #define numDoubles 1610612736
 #define clockFrequency 512000000
@@ -28,15 +27,12 @@ int main(int argc, char** argv){
         localArray[i] = rank*localArraySize + i;
     MPI_Barrier(MPI_COMM_WORLD);
 
-    
-    cudaInit(); //select device and cuda and memory allocation
+    //select GPU and allocate device memory
+    ReductionInfo reductionInfo = cudaInit(rank, localArray, localArraySize); 
 
     uint64_t startTime = clock_now();
-    double localSum = 0;
-    for(int i = 0; i < localArraySize; i++)
-        localSum += localArray[i];
-    //global sum with MPI reduce
     double globalSum;
+    double localSum = cudaReduce(&reductionInfo);
     MPI_Reduce(&localSum, &globalSum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     uint64_t endTime = clock_now();
 
