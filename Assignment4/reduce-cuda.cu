@@ -6,13 +6,15 @@
 #define numThreads 256
 #define numBlocks 64
 
+//This is a GPU function I've imported that's used in reduce7.
+//I've modified it to no longer be a templated function
 __device__ __forceinline__ double warpReduceSum(unsigned int mask, double mySum){
     for (int offset = warpSize / 2; offset > 0; offset /= 2)
         mySum += __shfl_down_sync(mask, mySum, offset);
     return mySum;
 }
 
-#define nIsPow2 true
+#define nIsPow2 true //N will always be a power of 2
 __global__ void reduce7(const double*__restrict__ g_idata, double*__restrict__ g_odata, unsigned int size){
     extern __shared__ double sdata[];
 
