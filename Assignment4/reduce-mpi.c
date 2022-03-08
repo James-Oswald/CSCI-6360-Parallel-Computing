@@ -33,6 +33,7 @@ int main(int argc, char** argv){
     uint64_t startTime = clock_now();
     double globalSum;
     double localSum = cudaReduce(&reductionInfo);
+    
     MPI_Reduce(&localSum, &globalSum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     uint64_t endTime = clock_now();
 
