@@ -27,7 +27,7 @@ int main(int argc, char** argv){
     //Preform Local Sum
     uint64_t startTime = clock_now();
     double localSum = 0;
-    for(int i = 0; i < localArraySize; i++)
+    for(size_t i = 0; i < localArraySize; i++)
         localSum += localArray[i];
     //global sum with MPI reduce
     double globalSum;
