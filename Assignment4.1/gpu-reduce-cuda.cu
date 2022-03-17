@@ -1,4 +1,5 @@
 
+#include<cstdio>
 
 template <class T>
 struct SharedMemory {
@@ -109,11 +110,19 @@ extern "C" void cudaInit(int rank, size_t localArrayLength_){
     //We know this will be smaller than the localArrayLength but dont know blocksize in cuda init.
     cudaMallocManaged(&d_outputArray, localArrayLength*sizeof(double));
 
+    for(size_t i = 0; i < localArrayLength; i++)
+        d_localArray[i] =  rank*localArrayLength + i;
 }
 
 extern "C" double cudaReduce(int threads, int blocks){
-    dim3 dimBlock(numThreads, 1, 1);
+    dim3 dimBlock(threads, 1, 1);
     dim3 dimGrid(blocks, 1, 1);
     int smemSize = ((threads / 32) + 1) * sizeof(double);
+    //threads are effectively locked at 512 here since we need them to be known at compile time
     reduce7<double, 512, false><<<dimGrid, dimBlock, smemSize>>>(d_localArray, d_outputArray, localArrayLength);
+    cudaDeviceSynchronize();
+    double localSum = 0;
+    for(int i = 0; i < blocks; i++) //preform the final reduction on the CPU
+        localSum += d_outputArray[i];
+    return localSum;
 }
