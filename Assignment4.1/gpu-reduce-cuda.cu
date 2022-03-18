@@ -1,6 +1,8 @@
 
 #include<cstdio>
 
+
+//Shared memory helper for reduce 7
 template <class T>
 struct SharedMemory {
     __device__ inline operator T *(){
@@ -14,8 +16,7 @@ struct SharedMemory {
     }
 };
 
-// specialize for double to avoid unaligned memory
-// access compile errors
+//double specialized shared memory helper for reduce 7
 template <>
 struct SharedMemory<double> {
     __device__ inline operator double *() {
@@ -29,6 +30,7 @@ struct SharedMemory<double> {
     }
 };
 
+//helper for reduce 7
 template <class T>
 __device__ __forceinline__ T warpReduceSum(unsigned int mask, T mySum){
     for (int offset = warpSize / 2; offset > 0; offset /= 2)
@@ -36,6 +38,7 @@ __device__ __forceinline__ T warpReduceSum(unsigned int mask, T mySum){
     return mySum;
 }
 
+//The main cuda reduction kernel, sums up each block
 template <typename T, unsigned int blockSize, bool nIsPow2>
 __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata, unsigned int n){
     T *sdata = SharedMemory<T>();
@@ -88,10 +91,13 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata, 
         g_odata[blockIdx.x] = mySum;
 }
 
+//globals for this cuda translation unit, no need to extern them, we use cudaInit to set them 
+// and cudaReduce makes use of them.
 size_t localArrayLength;
 double* d_localArray;
 double* d_outputArray;
 
+//init cuda, set device, allocate memory, fill local array.
 extern "C" void cudaInit(int rank, size_t localArrayLength_){
     cudaError_t cE;
     int cudaDeviceCount;
@@ -114,6 +120,9 @@ extern "C" void cudaInit(int rank, size_t localArrayLength_){
         d_localArray[i] =  rank*localArrayLength + i;
 }
 
+//The reduction function takes the number of threads and the number of blocks, uses the globals set in cudaInit
+//It calls the kernal then preforms a CPU sum over the block sums as was described in class, returning the total
+// local sum over all blocks
 extern "C" double cudaReduce(int threads, int blocks){
     dim3 dimBlock(threads, 1, 1);
     dim3 dimGrid(blocks, 1, 1);
