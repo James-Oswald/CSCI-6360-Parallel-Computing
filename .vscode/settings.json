@@ -12,7 +12,12 @@
         "initializer_list": "c",
         "utility": "c",
         "functional": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "x86intrin.h": "c",
+        "stdint.h": "c",
+        "stdlib.h": "c",
+        "string": "c",
+        "mpi.h": "c"
     },
     "editor.insertSpaces": true,
     "C_Cpp.errorSquiggles": "Enabled",
