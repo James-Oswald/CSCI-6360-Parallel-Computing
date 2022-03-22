@@ -108,5 +108,6 @@ int main(int argc, char** argv){
     //benchmark("scratch", "//");
     //benchmark("NVMe", "/");
     MPI_Finalize();
+    return 0;
 }
 
