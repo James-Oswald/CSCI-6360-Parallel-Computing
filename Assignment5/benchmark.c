@@ -27,19 +27,19 @@ unsigned long long clockRead(){
 
 const int numBlocks = 32;
 const int K = 1<<10, M = 1<<20;    //block size bases (in binary NOT decimal?)
-//#define lenBlockSizes 8
-//const int blockSizes[lenBlockSizes] = {128*K, 256*K, 512*K, 1*M, 2*M, 4*M, 8*M, 16*M};
-#define lenBlockSizes 3
-const int blockSizes[lenBlockSizes] = {128*K, 256*K, 1*M};
+#define lenBlockSizes 8
+const int blockSizes[lenBlockSizes] = {128*K, 256*K, 512*K, 1*M, 2*M, 4*M, 8*M, 16*M};
+// #define lenBlockSizes 3
+// const int blockSizes[lenBlockSizes] = {128*K, 256*K, 1*M};
 
 int rank, worldSize;
 uint8_t* data;   //The buffer of all 1s that is written and subsequently read
 
 void benchmark(const char* name, const char* filePath){
-    
+
     if(rank == 0)
         printf("Benchmarking for %s:\n", name);
-    
+
     for(int i = 0; i < lenBlockSizes; i++){ //For each blocksize
 
         //set up our data and open a file
@@ -48,23 +48,23 @@ void benchmark(const char* name, const char* filePath){
         memset(data, 0xff, blockSize);      //Fill block with ones
         char newFilePath[260];
         sprintf(newFilePath, "%s%lf.bin", filePath, blockSize/(double)M);
-        MPI_File fileHandle; 
+        MPI_File fileHandle;
         MPI_File_open(MPI_COMM_WORLD, newFilePath, MPI_MODE_CREATE | MPI_MODE_RDWR, MPI_INFO_NULL, &fileHandle);
 
         if(rank == 0)
             printf("\tBlocksize %lf MB, Filesize: %lf MB:\n", blockSize/(double)M, (blockSize*worldSize*32)/(double)M);
         //Don't start timing until all ranks have init the data and read the file
-        MPI_Barrier(MPI_COMM_WORLD); 
+        MPI_Barrier(MPI_COMM_WORLD);
         unsigned long long start = clockRead();
 
         for(int j = 0; j < 32; j++){ //each rank writes 32 blocks
             //Which block we're writing to, in line with the scheme in the pdf: rank 0 block 0, etc..
-            size_t blockIndex = rank+worldSize*j; 
+            size_t blockIndex = rank+worldSize*j;
             MPI_File_write_at(fileHandle, blockIndex*blockSize, data, blockSize, MPI_UINT8_T, MPI_STATUS_IGNORE);
         }
 
         //Finish the timing only after all ranks are done with writing
-        MPI_Barrier(MPI_COMM_WORLD); 
+        MPI_Barrier(MPI_COMM_WORLD);
         unsigned long long end = clockRead();
         if(rank == 0){
             double writeTime = (end-start)/(double)clockFrequency;
@@ -72,17 +72,17 @@ void benchmark(const char* name, const char* filePath){
         }
 
         //Don't start timing for read until the print is done
-        MPI_Barrier(MPI_COMM_WORLD); 
+        MPI_Barrier(MPI_COMM_WORLD);
         start = clockRead();
 
         for(int j = 0; j < 32; j++){ //each rank reads 32 blocks
             //Which block we're reading from, in line with the scheme in the pdf: rank 0 block 0, etc..
-            size_t blockIndex = rank+worldSize*j; 
+            size_t blockIndex = rank+worldSize*j;
             MPI_File_read_at(fileHandle, blockIndex*blockSize, data, blockSize, MPI_UINT8_T, MPI_STATUS_IGNORE);
         }
 
         //Finish the timing only after all ranks are done with reading
-        MPI_Barrier(MPI_COMM_WORLD); 
+        MPI_Barrier(MPI_COMM_WORLD);
         end = clockRead();
         if(rank == 0){
             double readTime = (end-start)/(double)clockFrequency;
@@ -91,7 +91,7 @@ void benchmark(const char* name, const char* filePath){
 
         //close and delete the file before testing the next block size
         MPI_File_close(&fileHandle);
-        MPI_Barrier(MPI_COMM_WORLD); 
+        MPI_Barrier(MPI_COMM_WORLD);
         if(rank == 0){
             MPI_File_delete(newFilePath, MPI_INFO_NULL);
         }
@@ -103,10 +103,29 @@ int main(int argc, char** argv){
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    benchmark("Disk", "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment5/test");
-    benchmark("SSD", "/mnt/c/Users/James/test");
-    //benchmark("scratch", "//");
-    //benchmark("NVMe", "/");
+    // benchmark("Disk", "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment5/test");
+    // benchmark("SSD", "/mnt/c/Users/James/test");
+
+    benchmark("scratch", "/gpfs/u/home/PCPB/PCPBrzkb/scratch");
+
+    if (!getenv("SLURM_JOB_UID") || !getenv("SLURM_JOB_ID")) {
+        fprintf(stderr, "Slurm environmental variables not found.\n");
+        exit(1);
+    }
+
+    char slurm_job_uid[10];
+    char slurm_job_id[10];
+    if (snprintf(slurm_job_uid, 10, "%s", getenv("SLURM_JOB_UID")) >= 10 ||
+        snprintf(slurm_job_id, 10, "%s", getenv("SLURM_JOB_ID")) >= 10) {
+            fprintf(stderr, "Buffer for environmental variables are too small.\n");
+            exit(1);
+    }
+
+    char nvme_path[40];
+    snprintf(nvme_path, 40, "/mnt/nvme/uid_%s/job_%s", slurm_job_uid, slurm_job_uid);
+
+    benchmark("NVMe", nvme_path);
+
     MPI_Finalize();
     return 0;
 }
