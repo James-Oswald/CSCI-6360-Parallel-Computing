@@ -128,7 +128,7 @@ int main(int argc, char** argv){
     }
 
     char nvme_path[40];
-    snprintf(nvme_path, 40, "/mnt/nvme/uid_%s/job_%s/test", slurm_job_uid, slurm_job_uid);
+    snprintf(nvme_path, 40, "/mnt/nvme/uid_%s/job_%s/test", slurm_job_uid, slurm_job_id);
 
     benchmark("NVMe", nvme_path);
 
