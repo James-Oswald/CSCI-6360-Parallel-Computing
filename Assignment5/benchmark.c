@@ -49,10 +49,16 @@ void benchmark(const char* name, const char* filePath){
         char newFilePath[260];
         sprintf(newFilePath, "%s%lf.bin", filePath, blockSize/(double)M);
         MPI_File fileHandle;
-        MPI_File_open(MPI_COMM_WORLD, newFilePath, MPI_MODE_CREATE | MPI_MODE_RDWR, MPI_INFO_NULL, &fileHandle);
+        int error = MPI_File_open(MPI_COMM_WORLD, newFilePath, MPI_MODE_CREATE | MPI_MODE_RDWR, MPI_INFO_NULL, &fileHandle);
+        if(error != MPI_SUCCESS){
+            char errorString[MPI_MAX_ERROR_STRING];
+            int errorLen;
+            MPI_Error_string(error, errorString, &errorLen);
+            printf("ErrorCode:%d, ErrorMsg:%s\n", error, errorString);
+        }
 
         if(rank == 0)
-            printf("\tBlocksize %lf MB, Filesize: %lf MB:\n", blockSize/(double)M, (blockSize*worldSize*32)/(double)M);
+            printf("\tFilename:%s, Blocksize %lf MB, Filesize: %lf MB:\n", newFilePath, blockSize/(double)M, (blockSize*worldSize*32)/(double)M);
         //Don't start timing until all ranks have init the data and read the file
         MPI_Barrier(MPI_COMM_WORLD);
         unsigned long long start = clockRead();
@@ -61,7 +67,6 @@ void benchmark(const char* name, const char* filePath){
             //Which block we're writing to, in line with the scheme in the pdf: rank 0 block 0, etc..
             size_t blockIndex = rank+worldSize*j;
             MPI_File_write_at(fileHandle, blockIndex*blockSize, data, blockSize, MPI_UINT8_T, MPI_STATUS_IGNORE);
-	    MPI_File_sync(fileHandle);
         }
 
         //Finish the timing only after all ranks are done with writing
