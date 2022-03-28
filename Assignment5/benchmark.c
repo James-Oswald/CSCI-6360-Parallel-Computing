@@ -61,6 +61,7 @@ void benchmark(const char* name, const char* filePath){
             //Which block we're writing to, in line with the scheme in the pdf: rank 0 block 0, etc..
             size_t blockIndex = rank+worldSize*j;
             MPI_File_write_at(fileHandle, blockIndex*blockSize, data, blockSize, MPI_UINT8_T, MPI_STATUS_IGNORE);
+	    MPI_File_sync(fileHandle);
         }
 
         //Finish the timing only after all ranks are done with writing
@@ -93,7 +94,7 @@ void benchmark(const char* name, const char* filePath){
         MPI_File_close(&fileHandle);
         MPI_Barrier(MPI_COMM_WORLD);
         if(rank == 0){
-            MPI_File_delete(newFilePath, MPI_INFO_NULL);
+            //MPI_File_delete(newFilePath, MPI_INFO_NULL);
         }
         free(data);
     }
@@ -106,7 +107,7 @@ int main(int argc, char** argv){
     // benchmark("Disk", "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment5/test");
     // benchmark("SSD", "/mnt/c/Users/James/test");
 
-    benchmark("scratch", "/gpfs/u/home/PCPB/PCPBrzkb/scratch");
+    benchmark("scratch", "/gpfs/u/home/PCPB/PCPBwldj/scratch/test");
 
     if (!getenv("SLURM_JOB_UID") || !getenv("SLURM_JOB_ID")) {
         fprintf(stderr, "Slurm environmental variables not found.\n");
@@ -122,7 +123,7 @@ int main(int argc, char** argv){
     }
 
     char nvme_path[40];
-    snprintf(nvme_path, 40, "/mnt/nvme/uid_%s/job_%s", slurm_job_uid, slurm_job_uid);
+    snprintf(nvme_path, 40, "/mnt/nvme/uid_%s/job_%s/test", slurm_job_uid, slurm_job_uid);
 
     benchmark("NVMe", nvme_path);
 
