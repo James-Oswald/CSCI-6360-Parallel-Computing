@@ -21,7 +21,8 @@ mv /tmp/tmp.$SLURM_JOB_ID /tmp/hosts.$SLURM_JOB_ID
 
 module load xl_r spectrum-mpi cuda/11.2
 
-mpirun -hostfile /tmp/hosts.$SLURM_JOB_ID -np $SLURM_NPROCS\
+taskset --cpu-list 0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116,120,124 mpirun -hostfile /tmp/hosts.$SLURM_JOB_ID -np $SLURM_NPROCS\
  /gpfs/u/home/PCPB/PCPBwldj/scratch/CSCI-6360-Parallel-Computing/Assignment5/benchmark.out
+
 
 rm /tmp/hosts.$SLURM_JOB_ID

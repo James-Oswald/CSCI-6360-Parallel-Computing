@@ -49,12 +49,13 @@ void benchmark(const char* name, const char* filePath){
         char newFilePath[260];
         sprintf(newFilePath, "%s%lf.bin", filePath, blockSize/(double)M);
         MPI_File fileHandle;
-        int error = MPI_File_open(MPI_COMM_WORLD, newFilePath, MPI_MODE_CREATE | MPI_MODE_RDWR, MPI_INFO_NULL, &fileHandle);
+	int error = MPI_File_open(MPI_COMM_WORLD, newFilePath, MPI_MODE_CREATE | MPI_MODE_RDWR, MPI_INFO_NULL, &fileHandle);
         if(error != MPI_SUCCESS){
             char errorString[MPI_MAX_ERROR_STRING];
             int errorLen;
             MPI_Error_string(error, errorString, &errorLen);
-            printf("ErrorCode:%d, ErrorMsg:%s\n", error, errorString);
+            printf("Rank:%d ErrorCode:%d, ErrorMsg:%s,Filename:%s\n", rank, error, errorString, newFilePath);
+	    continue;
         }
 
         if(rank == 0)
@@ -99,7 +100,7 @@ void benchmark(const char* name, const char* filePath){
         MPI_File_close(&fileHandle);
         MPI_Barrier(MPI_COMM_WORLD);
         if(rank == 0){
-            //MPI_File_delete(newFilePath, MPI_INFO_NULL);
+            MPI_File_delete(newFilePath, MPI_INFO_NULL);
         }
         free(data);
     }
@@ -109,9 +110,12 @@ int main(int argc, char** argv){
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &worldSize);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    
+    // Local Testing
     // benchmark("Disk", "/mnt/d/program/CSCI-6360-Parallel-Computing/Assignment5/test");
     // benchmark("SSD", "/mnt/c/Users/James/test");
 
+    //AiMOS Testing
     benchmark("scratch", "/gpfs/u/home/PCPB/PCPBwldj/scratch/test");
 
     if (!getenv("SLURM_JOB_UID") || !getenv("SLURM_JOB_ID")) {

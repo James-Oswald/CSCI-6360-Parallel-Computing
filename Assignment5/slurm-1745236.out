@@ -1,0 +1,196 @@
++ '[' x32 = x ']'
++ '[' x32 = x ']'
++ srun hostname -s
++ sort -u
++ awk '{ print $0 "-ib slots=32"; }/tmp/hosts.1745236'
++ mv /tmp/tmp.1745236 /tmp/hosts.1745236
++ module load xl_r spectrum-mpi cuda/11.2
+++ /usr/share/lmod/lmod/libexec/lmod bash load xl_r spectrum-mpi cuda/11.2
++ eval 'CC=/opt/ibm/xlC/16.1.1/bin/xlc_r;' export 'CC;' 'CCI_SMPI_SET_TS=2021082400;' export 'CCI_SMPI_SET_TS;' 'CPP=/opt/ibm/xlC/16.1.1/bin/xlc_r\' '-E;' export 'CPP;' 'CUDA_HOME=/usr/local/cuda-11.2;' export 'CUDA_HOME;' 'CUDA_PATH=/usr/local/cuda-11.2;' export 'CUDA_PATH;' 'CXX=/opt/ibm/xlC/16.1.1/bin/xlc++_r;' export 'CXX;' 'CXXCPP=/opt/ibm/xlC/16.1.1/bin/xlc++_r\' '-E;' export 'CXXCPP;' 'F77=/opt/ibm/xlf/16.1.1/bin/xlf_r;' export 'F77;' 'F90=/opt/ibm/xlf/16.1.1/bin/xlf90_r;' export 'F90;' 'F95=/opt/ibm/xlf/16.1.1/bin/xlf95_r;' export 'F95;' '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:1\;/opt/ibm/spectrum_mpi/profilesupport/lib:1\;/opt/ibm/spectrum_mpi/lib:1\;/opt/mellanox/sharp/lib:1\;/opt/mellanox/hcoll/lib:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/opt/ibm/spectrum_mpi/profilesupport/lib:/opt/ibm/spectrum_mpi/lib:/opt/mellanox/sharp/lib:/opt/mellanox/hcoll/lib;' export 'LD_LIBRARY_PATH;' 'LMOD_FAMILY_COMPILER=xl_r;' export 'LMOD_FAMILY_COMPILER;' 'LMOD_FAMILY_COMPILER_VERSION=16.1.1;' export 'LMOD_FAMILY_COMPILER_VERSION;' 'LMOD_FAMILY_MPI=spectrum-mpi;' export 'LMOD_FAMILY_MPI;' 'LMOD_FAMILY_MPI_VERSION=10.4;' export 'LMOD_FAMILY_MPI_VERSION;' '__LMOD_REF_COUNT_LOADEDMODULES=xl_r/16.1.1:1\;spectrum-mpi/10.4:1\;cuda/11.2:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=xl_r/16.1.1:spectrum-mpi/10.4:cuda/11.2;' export 'LOADEDMODULES;' 'MANPATH=/opt/ibm/spectrum_mpi/share/man;' export 'MANPATH;' '__LMOD_REF_COUNT_MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:1\;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:1\;/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:1\;/gpfs/u/software/dcs-rhel8/modulefiles:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:/gpfs/u/software/dcs-rhel8/modulefiles;' export 'MODULEPATH;' 'MPI_ROOT=/opt/ibm/spectrum_mpi;' export 'MPI_ROOT;' 'OPAL_LIBDIR=/opt/ibm/spectrum_mpi/lib;' export 'OPAL_LIBDIR;' 'PAMI_ENABLE_STRIPING=0;' export 'PAMI_ENABLE_STRIPING;' 'PAMI_IBV_ADAPTER_AFFINITY=1;' export 'PAMI_IBV_ADAPTER_AFFINITY;' 'PAMI_IBV_ENABLE_OOO_AR=1;' export 'PAMI_IBV_ENABLE_OOO_AR;' '__LMOD_REF_COUNT_PATH=/usr/local/cuda-11.2/bin:1\;/opt/ibm/spectrum_mpi/bin:1\;/opt/ibm/xlf/16.1.1/bin:1\;/opt/ibm/xlC/16.1.1/bin:1\;/usr/lpp/mmfs/bin:1\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/gpfs/u/home/PCPB/PCPBwldj/.local/bin:1\;/gpfs/u/home/PCPB/PCPBwldj/bin:1;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/usr/local/cuda-11.2/bin:/opt/ibm/spectrum_mpi/bin:/opt/ibm/xlf/16.1.1/bin:/opt/ibm/xlC/16.1.1/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/u/home/PCPB/PCPBwldj/.local/bin:/gpfs/u/home/PCPB/PCPBwldj/bin;' export 'PATH;' '__LMOD_REF_COUNT__LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:1\;/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:1\;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09InhsX3IiLFsibXBpIl09InNwZWN0cnVtLW1waSIsfSxtVD17Y3VkYT17WyJmbiJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvY3VkYS8xMS4yLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjIiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEvMTEuMiIsfSxbInNwZWN0cnVtLW1waSJd;' export '_ModuleTable001_;' '_ModuleTable002_=PXtbImZuIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL3NwZWN0cnVtLW1waS8xMC40Lmx1YSIsWyJmdWxsTmFtZSJdPSJzcGVjdHJ1bS1tcGkvMTAuNCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXtzdGF0ZT17WyJ0ZXN0aW5nIl09MSx9LH0sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ic3BlY3RydW0tbXBpIix9LHhsX3I9e1siZm4iXT0iL2dwZnMvdS9zb2Z0d2FyZS9kY3MtcmhlbDgvbW9kdWxlZmlsZXMveGxfci8xNi4xLjEubHVhIixbImZ1bGxOYW1lIl09InhsX3IvMTYuMS4xIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl;' export '_ModuleTable002_;' '_ModuleTable003_=ck5hbWUiXT0ieGxfciIsfSx9LG1wYXRoQT17Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvLmN1ZGEvMTEuMiIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy5zcGVjdHJ1bS1tcGkvMTAuNCIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy54bF9yLzE2LjEuMSIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ CC=/opt/ibm/xlC/16.1.1/bin/xlc_r
+++ export CC
+++ CCI_SMPI_SET_TS=2021082400
+++ export CCI_SMPI_SET_TS
+++ CPP='/opt/ibm/xlC/16.1.1/bin/xlc_r -E'
+++ export CPP
+++ CUDA_HOME=/usr/local/cuda-11.2
+++ export CUDA_HOME
+++ CUDA_PATH=/usr/local/cuda-11.2
+++ export CUDA_PATH
+++ CXX=/opt/ibm/xlC/16.1.1/bin/xlc++_r
+++ export CXX
+++ CXXCPP='/opt/ibm/xlC/16.1.1/bin/xlc++_r -E'
+++ export CXXCPP
+++ F77=/opt/ibm/xlf/16.1.1/bin/xlf_r
+++ export F77
+++ F90=/opt/ibm/xlf/16.1.1/bin/xlf90_r
+++ export F90
+++ F95=/opt/ibm/xlf/16.1.1/bin/xlf95_r
+++ export F95
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH='/usr/local/cuda-11.2/lib64:1;/opt/ibm/spectrum_mpi/profilesupport/lib:1;/opt/ibm/spectrum_mpi/lib:1;/opt/mellanox/sharp/lib:1;/opt/mellanox/hcoll/lib:1'
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/opt/ibm/spectrum_mpi/profilesupport/lib:/opt/ibm/spectrum_mpi/lib:/opt/mellanox/sharp/lib:/opt/mellanox/hcoll/lib
+++ export LD_LIBRARY_PATH
+++ LMOD_FAMILY_COMPILER=xl_r
+++ export LMOD_FAMILY_COMPILER
+++ LMOD_FAMILY_COMPILER_VERSION=16.1.1
+++ export LMOD_FAMILY_COMPILER_VERSION
+++ LMOD_FAMILY_MPI=spectrum-mpi
+++ export LMOD_FAMILY_MPI
+++ LMOD_FAMILY_MPI_VERSION=10.4
+++ export LMOD_FAMILY_MPI_VERSION
+++ __LMOD_REF_COUNT_LOADEDMODULES='xl_r/16.1.1:1;spectrum-mpi/10.4:1;cuda/11.2:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=xl_r/16.1.1:spectrum-mpi/10.4:cuda/11.2
+++ export LOADEDMODULES
+++ MANPATH=/opt/ibm/spectrum_mpi/share/man
+++ export MANPATH
+++ __LMOD_REF_COUNT_MODULEPATH='/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:1;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:1;/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:1;/gpfs/u/software/dcs-rhel8/modulefiles:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:/gpfs/u/software/dcs-rhel8/modulefiles
+++ export MODULEPATH
+++ MPI_ROOT=/opt/ibm/spectrum_mpi
+++ export MPI_ROOT
+++ OPAL_LIBDIR=/opt/ibm/spectrum_mpi/lib
+++ export OPAL_LIBDIR
+++ PAMI_ENABLE_STRIPING=0
+++ export PAMI_ENABLE_STRIPING
+++ PAMI_IBV_ADAPTER_AFFINITY=1
+++ export PAMI_IBV_ADAPTER_AFFINITY
+++ PAMI_IBV_ENABLE_OOO_AR=1
+++ export PAMI_IBV_ENABLE_OOO_AR
+++ __LMOD_REF_COUNT_PATH='/usr/local/cuda-11.2/bin:1;/opt/ibm/spectrum_mpi/bin:1;/opt/ibm/xlf/16.1.1/bin:1;/opt/ibm/xlC/16.1.1/bin:1;/usr/lpp/mmfs/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/gpfs/u/home/PCPB/PCPBwldj/.local/bin:1;/gpfs/u/home/PCPB/PCPBwldj/bin:1'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/usr/local/cuda-11.2/bin:/opt/ibm/spectrum_mpi/bin:/opt/ibm/xlf/16.1.1/bin:/opt/ibm/xlC/16.1.1/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/u/home/PCPB/PCPBwldj/.local/bin:/gpfs/u/home/PCPB/PCPBwldj/bin
+++ export PATH
+++ __LMOD_REF_COUNT__LMFILES_='/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:1;/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:1;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09InhsX3IiLFsibXBpIl09InNwZWN0cnVtLW1waSIsfSxtVD17Y3VkYT17WyJmbiJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvY3VkYS8xMS4yLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjIiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEvMTEuMiIsfSxbInNwZWN0cnVtLW1waSJd
+++ export _ModuleTable001_
+++ _ModuleTable002_=PXtbImZuIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL3NwZWN0cnVtLW1waS8xMC40Lmx1YSIsWyJmdWxsTmFtZSJdPSJzcGVjdHJ1bS1tcGkvMTAuNCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXtzdGF0ZT17WyJ0ZXN0aW5nIl09MSx9LH0sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ic3BlY3RydW0tbXBpIix9LHhsX3I9e1siZm4iXT0iL2dwZnMvdS9zb2Z0d2FyZS9kY3MtcmhlbDgvbW9kdWxlZmlsZXMveGxfci8xNi4xLjEubHVhIixbImZ1bGxOYW1lIl09InhsX3IvMTYuMS4xIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl
+++ export _ModuleTable002_
+++ _ModuleTable003_=ck5hbWUiXT0ieGxfciIsfSx9LG1wYXRoQT17Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvLmN1ZGEvMTEuMiIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy5zcGVjdHJ1bS1tcGkvMTAuNCIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy54bF9yLzE2LjEuMSIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ taskset --cpu-list 0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116,120,124 mpirun -hostfile /tmp/hosts.1745236 -np 32 /gpfs/u/home/PCPB/PCPBwldj/scratch/CSCI-6360-Parallel-Computing/Assignment5/benchmark.out
+[dcs200:1211731] [[46536,0],0] ORTE_ERROR_LOG: Take next option in file ../../../../../opensrc/ompi/orte/mca/rmaps/base/rmaps_base_support_fns.c at line 66
+Benchmarking for scratch:
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test0.125000.bin, Blocksize 0.125000 MB, Filesize: 128.000000 MB:
+		Write:
+			0.070877 Seconds
+			1805.933020 MB/S
+		Read:
+			0.513198 Seconds
+			249.416405 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test0.250000.bin, Blocksize 0.250000 MB, Filesize: 256.000000 MB:
+		Write:
+			0.586349 Seconds
+			436.599859 MB/S
+		Read:
+			0.004856 Seconds
+			52714.576261 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test0.500000.bin, Blocksize 0.500000 MB, Filesize: 512.000000 MB:
+		Write:
+			7.854653 Seconds
+			65.184291 MB/S
+		Read:
+			0.410490 Seconds
+			1247.291100 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test1.000000.bin, Blocksize 1.000000 MB, Filesize: 1024.000000 MB:
+		Write:
+			6.043272 Seconds
+			169.444644 MB/S
+		Read:
+			0.475569 Seconds
+			2153.208439 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test2.000000.bin, Blocksize 2.000000 MB, Filesize: 2048.000000 MB:
+		Write:
+			8.001668 Seconds
+			255.946626 MB/S
+		Read:
+			0.127583 Seconds
+			16052.307655 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test4.000000.bin, Blocksize 4.000000 MB, Filesize: 4096.000000 MB:
+		Write:
+			5.818360 Seconds
+			703.978465 MB/S
+		Read:
+			0.080320 Seconds
+			50996.254029 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test8.000000.bin, Blocksize 8.000000 MB, Filesize: 8192.000000 MB:
+		Write:
+			0.858417 Seconds
+			9543.142190 MB/S
+		Read:
+			0.332730 Seconds
+			24620.545732 MB/S
+	Filename:/gpfs/u/home/PCPB/PCPBwldj/scratch/test16.000000.bin, Blocksize 16.000000 MB, Filesize: 16384.000000 MB:
+		Write:
+			1.823641 Seconds
+			8984.224523 MB/S
+		Read:
+			0.659646 Seconds
+			24837.547403 MB/S
+Benchmarking for NVMe:
+	Filename:/mnt/nvme/uid_7236/job_1745236/test0.125000.bin, Blocksize 0.125000 MB, Filesize: 128.000000 MB:
+		Write:
+			0.039202 Seconds
+			3265.125869 MB/S
+		Read:
+			0.000775 Seconds
+			165179.190285 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test0.250000.bin, Blocksize 0.250000 MB, Filesize: 256.000000 MB:
+		Write:
+			0.066344 Seconds
+			3858.675878 MB/S
+		Read:
+			0.001751 Seconds
+			146161.574823 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test0.500000.bin, Blocksize 0.500000 MB, Filesize: 512.000000 MB:
+		Write:
+			0.131601 Seconds
+			3890.560820 MB/S
+		Read:
+			0.003638 Seconds
+			140745.509222 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test1.000000.bin, Blocksize 1.000000 MB, Filesize: 1024.000000 MB:
+		Write:
+			0.259816 Seconds
+			3941.253961 MB/S
+		Read:
+			0.005785 Seconds
+			176997.018023 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test2.000000.bin, Blocksize 2.000000 MB, Filesize: 2048.000000 MB:
+		Write:
+			0.517244 Seconds
+			3959.449267 MB/S
+		Read:
+			0.009046 Seconds
+			226387.654660 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test4.000000.bin, Blocksize 4.000000 MB, Filesize: 4096.000000 MB:
+		Write:
+			1.312748 Seconds
+			3120.171477 MB/S
+		Read:
+			0.026810 Seconds
+			152780.182881 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test8.000000.bin, Blocksize 8.000000 MB, Filesize: 8192.000000 MB:
+		Write:
+			2.228128 Seconds
+			3676.628959 MB/S
+		Read:
+			0.083761 Seconds
+			97801.799222 MB/S
+	Filename:/mnt/nvme/uid_7236/job_1745236/test16.000000.bin, Blocksize 16.000000 MB, Filesize: 16384.000000 MB:
+		Write:
+			4.548465 Seconds
+			3602.094543 MB/S
+		Read:
+			0.189132 Seconds
+			86627.452514 MB/S
++ rm /tmp/hosts.1745236

@@ -1,0 +1,596 @@
++ '[' x64 = x ']'
++ '[' x32 = x ']'
++ srun hostname -s
++ sort -u
++ awk '{ print $0 "-ib slots=32"; }/tmp/hosts.1741368'
++ mv /tmp/tmp.1741368 /tmp/hosts.1741368
++ module load xl_r spectrum-mpi cuda/11.2
+++ /usr/share/lmod/lmod/libexec/lmod bash load xl_r spectrum-mpi cuda/11.2
++ eval 'CC=/opt/ibm/xlC/16.1.1/bin/xlc_r;' export 'CC;' 'CCI_SMPI_SET_TS=2021082400;' export 'CCI_SMPI_SET_TS;' 'CPP=/opt/ibm/xlC/16.1.1/bin/xlc_r\' '-E;' export 'CPP;' 'CUDA_HOME=/usr/local/cuda-11.2;' export 'CUDA_HOME;' 'CUDA_PATH=/usr/local/cuda-11.2;' export 'CUDA_PATH;' 'CXX=/opt/ibm/xlC/16.1.1/bin/xlc++_r;' export 'CXX;' 'CXXCPP=/opt/ibm/xlC/16.1.1/bin/xlc++_r\' '-E;' export 'CXXCPP;' 'F77=/opt/ibm/xlf/16.1.1/bin/xlf_r;' export 'F77;' 'F90=/opt/ibm/xlf/16.1.1/bin/xlf90_r;' export 'F90;' 'F95=/opt/ibm/xlf/16.1.1/bin/xlf95_r;' export 'F95;' '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:1\;/opt/ibm/spectrum_mpi/profilesupport/lib:1\;/opt/ibm/spectrum_mpi/lib:1\;/opt/mellanox/sharp/lib:1\;/opt/mellanox/hcoll/lib:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/opt/ibm/spectrum_mpi/profilesupport/lib:/opt/ibm/spectrum_mpi/lib:/opt/mellanox/sharp/lib:/opt/mellanox/hcoll/lib;' export 'LD_LIBRARY_PATH;' 'LMOD_FAMILY_COMPILER=xl_r;' export 'LMOD_FAMILY_COMPILER;' 'LMOD_FAMILY_COMPILER_VERSION=16.1.1;' export 'LMOD_FAMILY_COMPILER_VERSION;' 'LMOD_FAMILY_MPI=spectrum-mpi;' export 'LMOD_FAMILY_MPI;' 'LMOD_FAMILY_MPI_VERSION=10.4;' export 'LMOD_FAMILY_MPI_VERSION;' '__LMOD_REF_COUNT_LOADEDMODULES=xl_r/16.1.1:1\;spectrum-mpi/10.4:1\;cuda/11.2:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=xl_r/16.1.1:spectrum-mpi/10.4:cuda/11.2;' export 'LOADEDMODULES;' 'MANPATH=/opt/ibm/spectrum_mpi/share/man;' export 'MANPATH;' '__LMOD_REF_COUNT_MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:1\;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:1\;/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:1\;/gpfs/u/software/dcs-rhel8/modulefiles:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:/gpfs/u/software/dcs-rhel8/modulefiles;' export 'MODULEPATH;' 'MPI_ROOT=/opt/ibm/spectrum_mpi;' export 'MPI_ROOT;' 'OPAL_LIBDIR=/opt/ibm/spectrum_mpi/lib;' export 'OPAL_LIBDIR;' 'PAMI_ENABLE_STRIPING=0;' export 'PAMI_ENABLE_STRIPING;' 'PAMI_IBV_ADAPTER_AFFINITY=1;' export 'PAMI_IBV_ADAPTER_AFFINITY;' 'PAMI_IBV_ENABLE_OOO_AR=1;' export 'PAMI_IBV_ENABLE_OOO_AR;' '__LMOD_REF_COUNT_PATH=/usr/local/cuda-11.2/bin:1\;/opt/ibm/spectrum_mpi/bin:1\;/opt/ibm/xlf/16.1.1/bin:1\;/opt/ibm/xlC/16.1.1/bin:1\;/usr/lpp/mmfs/bin:1\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/gpfs/u/home/PCPB/PCPBwldj/.local/bin:1\;/gpfs/u/home/PCPB/PCPBwldj/bin:1;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/usr/local/cuda-11.2/bin:/opt/ibm/spectrum_mpi/bin:/opt/ibm/xlf/16.1.1/bin:/opt/ibm/xlC/16.1.1/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/u/home/PCPB/PCPBwldj/.local/bin:/gpfs/u/home/PCPB/PCPBwldj/bin;' export 'PATH;' '__LMOD_REF_COUNT__LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:1\;/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:1\;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09InhsX3IiLFsibXBpIl09InNwZWN0cnVtLW1waSIsfSxtVD17Y3VkYT17WyJmbiJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvY3VkYS8xMS4yLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjIiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEvMTEuMiIsfSxbInNwZWN0cnVtLW1waSJd;' export '_ModuleTable001_;' '_ModuleTable002_=PXtbImZuIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL3NwZWN0cnVtLW1waS8xMC40Lmx1YSIsWyJmdWxsTmFtZSJdPSJzcGVjdHJ1bS1tcGkvMTAuNCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXtzdGF0ZT17WyJ0ZXN0aW5nIl09MSx9LH0sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ic3BlY3RydW0tbXBpIix9LHhsX3I9e1siZm4iXT0iL2dwZnMvdS9zb2Z0d2FyZS9kY3MtcmhlbDgvbW9kdWxlZmlsZXMveGxfci8xNi4xLjEubHVhIixbImZ1bGxOYW1lIl09InhsX3IvMTYuMS4xIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl;' export '_ModuleTable002_;' '_ModuleTable003_=ck5hbWUiXT0ieGxfciIsfSx9LG1wYXRoQT17Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvLmN1ZGEvMTEuMiIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy5zcGVjdHJ1bS1tcGkvMTAuNCIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy54bF9yLzE2LjEuMSIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ CC=/opt/ibm/xlC/16.1.1/bin/xlc_r
+++ export CC
+++ CCI_SMPI_SET_TS=2021082400
+++ export CCI_SMPI_SET_TS
+++ CPP='/opt/ibm/xlC/16.1.1/bin/xlc_r -E'
+++ export CPP
+++ CUDA_HOME=/usr/local/cuda-11.2
+++ export CUDA_HOME
+++ CUDA_PATH=/usr/local/cuda-11.2
+++ export CUDA_PATH
+++ CXX=/opt/ibm/xlC/16.1.1/bin/xlc++_r
+++ export CXX
+++ CXXCPP='/opt/ibm/xlC/16.1.1/bin/xlc++_r -E'
+++ export CXXCPP
+++ F77=/opt/ibm/xlf/16.1.1/bin/xlf_r
+++ export F77
+++ F90=/opt/ibm/xlf/16.1.1/bin/xlf90_r
+++ export F90
+++ F95=/opt/ibm/xlf/16.1.1/bin/xlf95_r
+++ export F95
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH='/usr/local/cuda-11.2/lib64:1;/opt/ibm/spectrum_mpi/profilesupport/lib:1;/opt/ibm/spectrum_mpi/lib:1;/opt/mellanox/sharp/lib:1;/opt/mellanox/hcoll/lib:1'
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:/opt/ibm/spectrum_mpi/profilesupport/lib:/opt/ibm/spectrum_mpi/lib:/opt/mellanox/sharp/lib:/opt/mellanox/hcoll/lib
+++ export LD_LIBRARY_PATH
+++ LMOD_FAMILY_COMPILER=xl_r
+++ export LMOD_FAMILY_COMPILER
+++ LMOD_FAMILY_COMPILER_VERSION=16.1.1
+++ export LMOD_FAMILY_COMPILER_VERSION
+++ LMOD_FAMILY_MPI=spectrum-mpi
+++ export LMOD_FAMILY_MPI
+++ LMOD_FAMILY_MPI_VERSION=10.4
+++ export LMOD_FAMILY_MPI_VERSION
+++ __LMOD_REF_COUNT_LOADEDMODULES='xl_r/16.1.1:1;spectrum-mpi/10.4:1;cuda/11.2:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=xl_r/16.1.1:spectrum-mpi/10.4:cuda/11.2
+++ export LOADEDMODULES
+++ MANPATH=/opt/ibm/spectrum_mpi/share/man
+++ export MANPATH
+++ __LMOD_REF_COUNT_MODULEPATH='/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:1;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:1;/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:1;/gpfs/u/software/dcs-rhel8/modulefiles:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.2:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:/gpfs/u/software/dcs-rhel8/modulefiles
+++ export MODULEPATH
+++ MPI_ROOT=/opt/ibm/spectrum_mpi
+++ export MPI_ROOT
+++ OPAL_LIBDIR=/opt/ibm/spectrum_mpi/lib
+++ export OPAL_LIBDIR
+++ PAMI_ENABLE_STRIPING=0
+++ export PAMI_ENABLE_STRIPING
+++ PAMI_IBV_ADAPTER_AFFINITY=1
+++ export PAMI_IBV_ADAPTER_AFFINITY
+++ PAMI_IBV_ENABLE_OOO_AR=1
+++ export PAMI_IBV_ENABLE_OOO_AR
+++ __LMOD_REF_COUNT_PATH='/usr/local/cuda-11.2/bin:1;/opt/ibm/spectrum_mpi/bin:1;/opt/ibm/xlf/16.1.1/bin:1;/opt/ibm/xlC/16.1.1/bin:1;/usr/lpp/mmfs/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/gpfs/u/home/PCPB/PCPBwldj/.local/bin:1;/gpfs/u/home/PCPB/PCPBwldj/bin:1'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/usr/local/cuda-11.2/bin:/opt/ibm/spectrum_mpi/bin:/opt/ibm/xlf/16.1.1/bin:/opt/ibm/xlC/16.1.1/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/u/home/PCPB/PCPBwldj/.local/bin:/gpfs/u/home/PCPB/PCPBwldj/bin
+++ export PATH
+++ __LMOD_REF_COUNT__LMFILES_='/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:1;/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:1;/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.2.lua
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09InhsX3IiLFsibXBpIl09InNwZWN0cnVtLW1waSIsfSxtVD17Y3VkYT17WyJmbiJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvY3VkYS8xMS4yLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjIiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEvMTEuMiIsfSxbInNwZWN0cnVtLW1waSJd
+++ export _ModuleTable001_
+++ _ModuleTable002_=PXtbImZuIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL3NwZWN0cnVtLW1waS8xMC40Lmx1YSIsWyJmdWxsTmFtZSJdPSJzcGVjdHJ1bS1tcGkvMTAuNCIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXtzdGF0ZT17WyJ0ZXN0aW5nIl09MSx9LH0sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ic3BlY3RydW0tbXBpIix9LHhsX3I9e1siZm4iXT0iL2dwZnMvdS9zb2Z0d2FyZS9kY3MtcmhlbDgvbW9kdWxlZmlsZXMveGxfci8xNi4xLjEubHVhIixbImZ1bGxOYW1lIl09InhsX3IvMTYuMS4xIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNl
+++ export _ModuleTable002_
+++ _ModuleTable003_=ck5hbWUiXT0ieGxfciIsfSx9LG1wYXRoQT17Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvLmN1ZGEvMTEuMiIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy5zcGVjdHJ1bS1tcGkvMTAuNCIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzLy54bF9yLzE2LjEuMSIsIi9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzIix9
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ taskset --cpu-list 0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116,120,124 mpirun -hostfile /tmp/hosts.1741368 -np 64 /gpfs/u/home/PCPB/PCPBwldj/scratch/CSCI-6360-Parallel-Computing/Assignment5/benchmark.out
+[dcs258:3137036] [[40332,0],0] ORTE_ERROR_LOG: Take next option in file ../../../../../opensrc/ompi/orte/mca/rmaps/base/rmaps_base_support_fns.c at line 66
+[dcs258:3137036] [[40332,0],0] ORTE_ERROR_LOG: Take next option in file ../../../../../opensrc/ompi/orte/mca/rmaps/base/rmaps_base_support_fns.c at line 66
+Benchmarking for NVMe:
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.125000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.250000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test0.500000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test1.000000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test2.000000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test4.000000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test8.000000.bin
+Rank:6 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:22 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:23 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:29 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:13 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:5 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:28 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:18 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:0 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:26 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:16 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:27 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:9 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:31 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:1 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:24 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:21 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:11 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:14 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:61 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:3 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:20 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:19 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:7 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:17 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:4 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:12 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:30 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:59 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:15 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:2 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:8 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:25 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:43 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:10 ErrorCode:35, ErrorMsg:MPI_ERR_IO: input/output error,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:47 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:53 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:63 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:57 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:41 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:45 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:39 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:48 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:37 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:40 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:55 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:35 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:32 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:58 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:62 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:56 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:38 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:50 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:49 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:52 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:36 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:34 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:42 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:60 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:54 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:33 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:51 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:46 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
+Rank:44 ErrorCode:42, ErrorMsg:MPI_ERR_NO_SUCH_FILE: no such file or directory,Filename:/mnt/nvme/uid_7236/job_1741368/test16.000000.bin
++ rm /tmp/hosts.1741368
